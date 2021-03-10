@@ -24,7 +24,6 @@ jobs:
       - name: npm install, patch and build
         run: |
           npm install
-          npm version patch
           npm run build
       - name: npm publish
         run: |
