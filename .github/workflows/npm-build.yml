@@ -1,9 +1,10 @@
-name: Build and Publish
+name: Test and Build
 
 on:
-  release:
-    types:
-      - published
+  pull_request:
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,10 +21,5 @@ jobs:
       - name: npm install, build
         run: |
           npm install
+          npm run test
           npm run build
-      - name: npm publish
-        run: |
-          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-          npm run echo-publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
