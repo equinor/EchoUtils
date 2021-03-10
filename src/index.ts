@@ -5,3 +5,6 @@
 export function helloWorld() {
   console.log("hello world!");
 }
+
+export { useOnOutsideClick } from './hooks/useOnOutsideClick';
+export { useFocus } from './hooks/useFocus';
