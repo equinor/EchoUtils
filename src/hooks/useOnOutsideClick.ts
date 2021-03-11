@@ -7,7 +7,7 @@ import useOnclickOutside, { Callback } from 'react-cool-onclickoutside';
  * @param {Callback} callback
  * @return {*} A ref for the element the user will click outside of.
  */
-export function useOnOutsideClick(callback: Callback) {
+export function useOnOutsideClick(callback: Callback): any {
     const ref = useOnclickOutside(callback)
     return ref;
 }
