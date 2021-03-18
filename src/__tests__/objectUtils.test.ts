@@ -1,4 +1,4 @@
-import { objectIsEmpty } from '../utils/objectUtils';
+import { objectIsEmpty, objectsIsEqual } from '../utils/objectUtils';
 
 describe('objectIsEmpty', () => {
     it('should return true if all values are empty in an object', () => {
@@ -73,3 +73,63 @@ describe('objectIsEmpty', () => {
         expect(result4).toBe(false);
     });
 });
+
+describe('objectsIsEqual', () => {
+    it('should return true if all values in the objects are equal', () => {
+        const testObject1 = {
+            val1: 'val',
+            val2: [1, 2, 3],
+            val3: {prop1: true}
+        };
+        const testObject2 = {
+            val1: 'val',
+            val2: [1, 2, 3],
+            val3: {prop1: true}
+        };
+        const result = objectsIsEqual(testObject1, testObject2);
+        expect(result).toBe(true);
+    });
+    it('should return false if any values are not equal', () => {
+        const testObject1 = {
+            val1: 'val',
+            val2: [1, 2, 3],
+            val3: {prop1: true}
+        };
+        const testObject2 = {
+            val1: 'val',
+            val2: [1, 2, 3],
+            val3: {prop1: false}
+        };
+        const result = objectsIsEqual(testObject1, testObject2);
+        expect(result).toBe(false);
+    });
+    it('should return false if key names do not match', () => {
+        const testObject1 = {
+            val1: 'val',
+            val2: [1, 2, 3],
+            val3: {prop1: true}
+        };
+        const testObject2 = {
+            val1: 'val',
+            val2: [1, 2, 3],
+            val4: {prop1: true}
+        };
+        const result = objectsIsEqual(testObject1, testObject2);
+        expect(result).toBe(false);
+    });
+    it('should ignore the order of the properties', () => {
+        const testObject1 = {
+            val1: 'val',
+            val2: [1, 2, 3],
+            val3: {prop1: true}
+        };
+        const testObject2 = {
+            val2: [1, 2, 3],
+            val1: 'val',
+            val3: {prop1: true}
+        };
+        const result = objectsIsEqual(testObject1, testObject2);
+        expect(result).toBe(true);
+    });
+});
+
