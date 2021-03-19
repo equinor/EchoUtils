@@ -136,12 +136,20 @@ describe('dateToStringOrEmpty tests', () => {
     it('midnight 00h should result in only current date being returned', () => {
         const date = '2021-03-19T00:00:00';
         const actualDate = dateToStringOrEmpty(date);
-        expect(actualDate).toEqual('19/03/2021');
+        expect(actualDate).not.toContain('00:00:00');
+        expect(actualDate).toContain('2021');
+        expect(actualDate).toContain('19');
+        expect(actualDate).toContain('3');
+        expect(actualDate).not.toContain('T');
     });
     it('midnight 24h should result in next date being returned', () => {
         const date = '2021-03-19T24:00:00';
         const actualDate = dateToStringOrEmpty(date);
-        expect(actualDate).toEqual('20/03/2021');
+        expect(actualDate).toContain('24:00:00');
+        expect(actualDate).toContain('2021');
+        expect(actualDate).toContain('20');
+        expect(actualDate).toContain('3');
+        expect(actualDate).not.toContain('T');
     });
 });
 
