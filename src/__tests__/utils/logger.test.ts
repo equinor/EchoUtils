@@ -267,27 +267,25 @@ describe('LogSubscriptions behaves as expected', () => {
         expect(subscriberId).toBeGreaterThan(0);
     });
 
-    describe('LogSubscriptions no notifications after unsubscribe ', () => {
-        it('addSubscribers with notifyLogSubscribers enabled', () => {
-            // :: Arrange
-            setLoggerConfiguration({
-                isEnabled: true,
-                isDevelopment: false,
-                logWithStackTrace: false,
-                notifyLogSubscribers: true,
-                isMSALLoggingEnabled: false
-            });
-            const subscriberCallback = jest.fn();
-    
-            // :: Act
-            const subscriberId = addLogSubscriber(subscriberCallback);
-            removeLogSubscriber(subscriberId);
-            logInfo('Hello');
-            logWarn('World');
-            logError('!');
-    
-            // :: Assert
-            expect(subscriberCallback).not.toBeCalled();
+    it('removeLogSubscriber prevents further notifications from being received', () => {
+        // :: Arrange
+        setLoggerConfiguration({
+            isEnabled: true,
+            isDevelopment: false,
+            logWithStackTrace: false,
+            notifyLogSubscribers: true,
+            isMSALLoggingEnabled: false
         });
+        const subscriberCallback = jest.fn();
+
+        // :: Act
+        const subscriberId = addLogSubscriber(subscriberCallback);
+        removeLogSubscriber(subscriberId);
+        logInfo('Hello');
+        logWarn('World');
+        logError('!');
+
+        // :: Assert
+        expect(subscriberCallback).not.toBeCalled();
     });
 });
