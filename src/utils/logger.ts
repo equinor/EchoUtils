@@ -84,7 +84,7 @@ export function logError(...args: any[]): void {
     localLog(LogType.Error, ...args);
 }
 
-const isMac = (): boolean => {
+const isIOS = (): boolean => {
     const mac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
     return mac;
 };
@@ -97,7 +97,7 @@ function getStackCallerFunctionName(err: any): string {
         : err.stack.includes('logPerformanceToConsole')
         ? err.stack.split('\n')[4]
         : err.stack.split('\n')[3];
-    if (!isMac() && String(caller).includes('at')) caller = caller.split('at ')[1].split(' (')[0];
+    if (!isIOS() && String(caller).includes('at')) caller = caller.split('at ')[1].split(' (')[0];
     return caller;
 }
 
