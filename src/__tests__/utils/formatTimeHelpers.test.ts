@@ -1,4 +1,4 @@
-import { dateToStringOrEmpty, diffHours, diffMinutes, ElapsedTimeInSeconds, elapsedTimeInSecondsBetween, ElapsedTimeInSecondsToFixed } from "../../utils/formatTimeHelpers";
+import { dateToStringOrEmpty, diffHours, diffMinutes, elapsedTimeInSeconds, elapsedTimeInSecondsBetween, elapsedTimeInSecondsToFixed } from "../../utils/formatTimeHelpers";
 
 
 describe('diffHours', () => {
@@ -73,7 +73,7 @@ describe('diffMinutes', () => {
     });
 });
 
-describe('ElapsedTimeInSecondsBetween', () => {
+describe('elapsedTimeInSecondsBetween', () => {
     it('10 000 milliseconds difference should return 10 seconds elapsed', () => {
         const fromMs = 0;
         const toMs = 10000;
@@ -153,12 +153,12 @@ describe('dateToStringOrEmpty tests', () => {
     });
 });
 
-describe('ElapsedTimeInSeconds tests', () => {
+describe('elapsedTimeInSeconds tests', () => {
     it('should return expected 5 seconds for given input', () => {
         const startTimeInMs = 2_000; 
         const endTimeInMs = 7_000;
         performance.now = jest.fn(() => endTimeInMs);
-        const inSeconds = ElapsedTimeInSeconds(startTimeInMs);
+        const inSeconds = elapsedTimeInSeconds(startTimeInMs);
         expect(inSeconds).toEqual(5);
     });
 
@@ -166,41 +166,41 @@ describe('ElapsedTimeInSeconds tests', () => {
         const startTimeInMs = 2_000; 
         const endTimeInMs = 7_123;
         performance.now = jest.fn(() => endTimeInMs);
-        const inSeconds = ElapsedTimeInSeconds(startTimeInMs);
+        const inSeconds = elapsedTimeInSeconds(startTimeInMs);
         expect(inSeconds).toEqual(5.123);
     });
 });
 
-describe('ElapsedTimeInSecondsToFixed tests', () => {
-    it('ElapsedTimeInSecondsToFixed defaults to 2 decimals', () => {
+describe('elapsedTimeInSecondsToFixed tests', () => {
+    it('elapsedTimeInSecondsToFixed defaults to 2 decimals', () => {
         const startTimeInMs = 2_000; 
         const endTimeInMs = 7_123;
         performance.now = jest.fn(() => endTimeInMs);
-        const inSeconds = ElapsedTimeInSecondsToFixed(startTimeInMs);
+        const inSeconds = elapsedTimeInSecondsToFixed(startTimeInMs);
         expect(inSeconds).toEqual(5.12);
     });
 
-    it('ElapsedTimeInSecondsToFixed does default rounding as expected', () => {
+    it('elapsedTimeInSecondsToFixed does default rounding as expected', () => {
         const startTimeInMs = 2_000; 
         const endTimeInMs = 3_005;
         performance.now = jest.fn(() => endTimeInMs);
-        const inSeconds = ElapsedTimeInSecondsToFixed(startTimeInMs);
+        const inSeconds = elapsedTimeInSecondsToFixed(startTimeInMs);
         expect(inSeconds).toEqual(1.01);
     });
 
-    it('ElapsedTimeInSecondsToFixed uses fixed number of decimals', () => {
+    it('elapsedTimeInSecondsToFixed uses fixed number of decimals', () => {
         const startTimeInMs = 2_000; 
         const endTimeInMs = 7_000;
         performance.now = jest.fn(() => endTimeInMs);
-        const inSeconds = ElapsedTimeInSecondsToFixed(startTimeInMs);
+        const inSeconds = elapsedTimeInSecondsToFixed(startTimeInMs);
         expect(inSeconds).toEqual(5.00);
     });
 
-    it('ElapsedTimeInSecondsToFixed returns number of decimals according to input', () => {
+    it('elapsedTimeInSecondsToFixed returns number of decimals according to input', () => {
         const startTimeInMs = 2_000; 
         const endTimeInMs = 7_123.456;
         performance.now = jest.fn(() => endTimeInMs);
-        const inSeconds = ElapsedTimeInSecondsToFixed(startTimeInMs, 4);
+        const inSeconds = elapsedTimeInSecondsToFixed(startTimeInMs, 4);
         expect(inSeconds).toEqual(5.1235);
     });
 });

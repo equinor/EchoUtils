@@ -38,7 +38,7 @@ export function elapsedTimeInSecondsBetween(startTimeMs: number, endTimeMs: numb
  * Returns the elapsed time since startTime in seconds.
  * @param startTimeMs The start time to measure elapsed time from in milliseconds.
  */
-export function ElapsedTimeInSeconds(startTimeMs: number): number {
+export function elapsedTimeInSeconds(startTimeMs: number): number {
     return elapsedTimeInSecondsBetween(performance.now(), startTimeMs);
 }
 
@@ -47,8 +47,8 @@ export function ElapsedTimeInSeconds(startTimeMs: number): number {
  * @param startTimeMs The start time to measure elapsed time from.
  * @param decimalPlaces Number of decimal places.
  */
-export function ElapsedTimeInSecondsToFixed(startTimeMs: number, decimalPlaces = 2): number {
-    const seconds = ElapsedTimeInSeconds(startTimeMs);
+export function elapsedTimeInSecondsToFixed(startTimeMs: number, decimalPlaces = 2): number {
+    const seconds = elapsedTimeInSeconds(startTimeMs);
     const secondsFixedDecimals = Number(Math.round(parseFloat(seconds + 'e' + decimalPlaces)) + 'e-' + decimalPlaces); //https://stackoverflow.com/questions/6134039/format-number-to-always-show-2-decimal-places
     return secondsFixedDecimals;
 }
