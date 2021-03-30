@@ -1,5 +1,5 @@
 import { ObserverClass, ObserverIdentifier } from './classObserver';
-import { ElapsedTimeInSeconds } from './formatTimeHelpers';
+import { elapsedTimeInSeconds } from './formatTimeHelpers';
 
 /**
  * Log configuration
@@ -130,7 +130,7 @@ function logWithType(logType: LogType, ...args: any[]): void {
 }
 
 export function logPerformanceToConsole(message: string, startTime: number): void {
-    const timeInSeconds = ElapsedTimeInSeconds(startTime);
+    const timeInSeconds = elapsedTimeInSeconds(startTime);
     let color = 'green';
     if (timeInSeconds > 0.3) color = 'orange';
     if (timeInSeconds > 1) color = 'red';

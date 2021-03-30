@@ -3,12 +3,12 @@ import { addLogSubscriber, logError, logInfo, logMSAL, logPerformanceToConsole, 
 // Mock the time helpers so that we can control the timing in the tests
 // Do note that we seemingly need to have the jest.mock _before_ the import statement to have thing work properly...
 jest.mock('../../utils/formatTimeHelpers');
-import { ElapsedTimeInSeconds } from '../../utils/formatTimeHelpers';
+import { elapsedTimeInSeconds } from '../../utils/formatTimeHelpers';
 
 describe('Logger behaves as expected', () => {
     let logSpy, warnSpy, errorSpy;
     
-    const mockElapsedTimeInSeconds = ElapsedTimeInSeconds as jest.Mock;
+    const mockElapsedTimeInSeconds = elapsedTimeInSeconds as jest.Mock;
 
     beforeEach(() => {
         logSpy = jest.spyOn(console, 'log');
