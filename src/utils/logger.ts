@@ -25,13 +25,24 @@ class LogSubscribers extends ObserverClass {
 const LogSubscriberType : string  = 'LogSubscriberType';
 const logSubscribers : LogSubscribers = new LogSubscribers();
 
+
+/**
+ * The interface for the callback function used for subscribers, @see{addLogSubscriber}.
+ *
+ * @export
+ * @interface CallbackFunction
+ */
+export interface CallbackFunction {
+    (logOutput: string) : void;
+}
+
 /**
  * Add a subscriber to the given type. If the configuration is setup to notify subscribers, then the callback
  * given here will be called if a logging is performed on the given type.
  * @param callback 
  * @returns a unique identifier for the subscriber which later can be used in {@link removeLogSubscriber}.
  */
-export function addLogSubscriber(callback: Function) : ObserverIdentifier {
+export function addLogSubscriber(callback: CallbackFunction) : ObserverIdentifier {
     return logSubscribers.addSubscriber(callback, LogSubscriberType);
 }
 
