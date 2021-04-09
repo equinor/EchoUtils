@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ObserverClass, ObserverIdentifier } from './classObserver';
 import { elapsedTimeInSeconds } from './formatTimeHelpers';
 
 /**
  * Log configuration
  */
- let config = {
+let config = {
     isEnabled: false,
     logWithStackTrace: false,
     notifyLogSubscribers: false,
@@ -20,11 +21,10 @@ class LogSubscribers extends ObserverClass {
         super();
     }
 }
-// The ObserverClass needs a "type" on each subscription. Consumers of the logger (i.e. logSubscriptions) do not 
-// need to know about this and we just assign the same "type" to all subscribers; this one. 
-const LogSubscriberType : string  = 'LogSubscriberType';
-const logSubscribers : LogSubscribers = new LogSubscribers();
-
+// The ObserverClass needs a "type" on each subscription. Consumers of the logger (i.e. logSubscriptions) do not
+// need to know about this and we just assign the same "type" to all subscribers; this one.
+const LogSubscriberType = 'LogSubscriberType';
+const logSubscribers: LogSubscribers = new LogSubscribers();
 
 /**
  * The interface for the callback function used for subscribers, @see{addLogSubscriber}.
@@ -33,7 +33,7 @@ const logSubscribers : LogSubscribers = new LogSubscribers();
  * @interface SubscriberCallbackFunction
  */
 export interface SubscriberCallbackFunction {
-    (logOutput: string) : void;
+    (logOutput: string): void;
 }
 
 /**
@@ -42,7 +42,7 @@ export interface SubscriberCallbackFunction {
  * @param callback {@link SubscriberCallbackFunction}, the function that will be called on log events.
  * @returns a unique identifier for the subscriber which later can be used in {@link removeLogSubscriber}.
  */
-export function addLogSubscriber(callback: SubscriberCallbackFunction) : ObserverIdentifier {
+export function addLogSubscriber(callback: SubscriberCallbackFunction): ObserverIdentifier {
     return logSubscribers.addSubscriber(callback, LogSubscriberType);
 }
 
@@ -50,7 +50,7 @@ export function addLogSubscriber(callback: SubscriberCallbackFunction) : Observe
  * Remove the given log-subscriber from receiving any further log-notifications.
  * @param identifier The identifier as obtained from {@link addLogSubscriber}
  */
-export function removeLogSubscriber(identifier : ObserverIdentifier) {
+export function removeLogSubscriber(identifier: ObserverIdentifier): void {
     logSubscribers.removeSubscriber(identifier);
 }
 
@@ -116,7 +116,7 @@ function localLog(logType: LogType, ...args: any[]): void {
     if (!config.isEnabled) {
         return;
     }
-    
+
     if (config.notifyLogSubscribers) {
         logSubscribers.notify(args, LogSubscriberType);
     }

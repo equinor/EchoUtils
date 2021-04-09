@@ -19,15 +19,15 @@ describe('ClassObserver ', () => {
         const firstFunc = jest.fn();
         const secondFunc = jest.fn();
         const typeName = 'someType';
-        const otherTypeName = 'someOtherType'
+        const otherTypeName = 'someOtherType';
         classObserver.addSubscriber(firstFunc, typeName);
         classObserver.addSubscriber(secondFunc, otherTypeName);
 
         // :: Act
-        classObserver.notify<string>("hello world", typeName);
+        classObserver.notify<string>('hello world', typeName);
 
         // :: Assert
-        expect(firstFunc).toBeCalledWith("hello world");
+        expect(firstFunc).toBeCalledWith('hello world');
         expect(secondFunc).not.toBeCalled();
     });
 
@@ -39,9 +39,9 @@ describe('ClassObserver ', () => {
 
         // :: Act
         classObserver.removeSubscriber(observerId);
-        classObserver.notify<string>("hello world", typeName);
+        classObserver.notify<string>('hello world', typeName);
 
         // :: Assert
-        expect(func).not.toBeCalled();        
+        expect(func).not.toBeCalled();
     });
 });

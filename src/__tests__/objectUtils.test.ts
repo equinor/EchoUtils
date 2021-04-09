@@ -1,4 +1,4 @@
-import { objectIsEmpty, objectsIsEqual, arraysIsEqual } from '../utils/objectUtils';
+import { arraysIsEqual, objectIsEmpty, objectsIsEqual } from '../utils/objectUtils';
 
 describe('objectIsEmpty', () => {
     it('should return true if all values are empty in an object', () => {
@@ -79,12 +79,12 @@ describe('objectsIsEqual', () => {
         const testObject1 = {
             val1: 'val',
             val2: [1, 2, 3],
-            val3: {prop1: true}
+            val3: { prop1: true }
         };
         const testObject2 = {
             val1: 'val',
             val2: [1, 2, 3],
-            val3: {prop1: true}
+            val3: { prop1: true }
         };
         const result = objectsIsEqual(testObject1, testObject2);
         expect(result).toBe(true);
@@ -93,12 +93,12 @@ describe('objectsIsEqual', () => {
         const testObject1 = {
             val1: 'val',
             val2: [1, 2, 3],
-            val3: {prop1: true}
+            val3: { prop1: true }
         };
         const testObject2 = {
             val1: 'val',
             val2: [1, 2, 3],
-            val3: {prop1: false}
+            val3: { prop1: false }
         };
         const result = objectsIsEqual(testObject1, testObject2);
         expect(result).toBe(false);
@@ -107,12 +107,12 @@ describe('objectsIsEqual', () => {
         const testObject1 = {
             val1: 'val',
             val2: [1, 2, 3],
-            val3: {prop1: true}
+            val3: { prop1: true }
         };
         const testObject2 = {
             val1: 'val',
             val2: [1, 2, 3],
-            val4: {prop1: true}
+            val4: { prop1: true }
         };
         const result = objectsIsEqual(testObject1, testObject2);
         expect(result).toBe(false);
@@ -121,12 +121,12 @@ describe('objectsIsEqual', () => {
         const testObject1 = {
             val1: 'val',
             val2: [1, 2, 3],
-            val3: {prop1: true}
+            val3: { prop1: true }
         };
         const testObject2 = {
             val2: [1, 2, 3],
             val1: 'val',
-            val3: {prop1: true}
+            val3: { prop1: true }
         };
         const result = objectsIsEqual(testObject1, testObject2);
         expect(result).toBe(true);
@@ -153,22 +153,21 @@ describe('arraysIsEqual', () => {
         expect(result).toBe(false);
     });
     it('should return true if the values do not have the same order and ignoreOrder flag is passed', () => {
-        const a1 = [1, 2, 3, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 3]}}, 4];
-        const a2 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 3]}}];
+        const a1 = [1, 2, 3, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 3] } }, 4];
+        const a2 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 3] } }];
         const result = arraysIsEqual(a1, a2, true);
         expect(result).toBe(true);
     });
     it('should return true for equal arrays with object and array values', () => {
-        const a1 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 3]}}];
-        const a2 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 3]}}];
+        const a1 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 3] } }];
+        const a2 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 3] } }];
         const result = arraysIsEqual(a1, a2);
         expect(result).toBe(true);
     });
     it('should return false for non-equal arrays with object and array values', () => {
-        const a1 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 3]}}];
-        const a2 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 'val']}}];
+        const a1 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 3] } }];
+        const a2 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 'val'] } }];
         const result = arraysIsEqual(a1, a2);
         expect(result).toBe(false);
     });
 });
-

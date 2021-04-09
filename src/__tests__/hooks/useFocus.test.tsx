@@ -1,8 +1,8 @@
-import React from 'react';
 import { screen } from '@testing-library/dom';
-import { renderHook } from '@testing-library/react-hooks';
 import { render } from '@testing-library/react';
-import { useFocus } from '../hooks/useFocus';
+import { renderHook } from '@testing-library/react-hooks';
+import React from 'react';
+import { useFocus } from '../../hooks/useFocus';
 
 test('should set focus to element containing the returned ref', () => {
     const { result } = renderHook(() => useFocus<HTMLInputElement>());

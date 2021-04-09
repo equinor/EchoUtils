@@ -4,7 +4,8 @@
  * @param {Record<string, any>} obj The object to consider.
  * @return {*}  {boolean} Returns if the array is empty (true) or not (false).
  */
- export const objectIsEmpty = (obj: Record<string, any>): boolean => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const objectIsEmpty = (obj: Record<string, any>): boolean => {
     const keys = Object.keys(obj);
 
     for (let i = 0; i < keys.length; i++) {
@@ -29,7 +30,7 @@
  * @param {Record<string, unknown>} obj2 The second object to consider.
  * @return {*}  {boolean} Returns if the objects are equal (true) or not (false).
  */
- export const objectsIsEqual = (obj1: Record<string, unknown>, obj2: Record<string, unknown>): boolean => {
+export const objectsIsEqual = (obj1: Record<string, unknown>, obj2: Record<string, unknown>): boolean => {
     const obj1Keys = Object.keys(obj1);
     const obj2Keys = Object.keys(obj2);
 
@@ -37,7 +38,7 @@
     obj1Keys.sort();
     obj2Keys.sort();
     if (!arraysIsEqual(obj1Keys, obj2Keys)) return false;
-    
+
     for (let i = 0; i < obj1Keys.length; i++) {
         const key = obj1Keys[i];
         const val1 = obj1[key];
@@ -54,7 +55,7 @@
         }
     }
     return true;
-}
+};
 
 /**
  *
@@ -66,7 +67,11 @@
  * @param {boolean} [ignoreOrder] Flag which decides whether the order should be ignored.
  * @return {*}  {boolean} Returns if the arrays are equal (true) or not (false).
  */
- export const arraysIsEqual = (a1: ReadonlyArray<unknown>, a2: ReadonlyArray<unknown>, ignoreOrder?: boolean): boolean => {
+export const arraysIsEqual = (
+    a1: ReadonlyArray<unknown>,
+    a2: ReadonlyArray<unknown>,
+    ignoreOrder?: boolean
+): boolean => {
     if (a1 === a2) return true;
     if (a1 == null || a2 == null) return false;
     if (a1.length !== a2.length) return false;

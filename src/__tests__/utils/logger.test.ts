@@ -1,13 +1,23 @@
-import { addLogSubscriber, logError, logInfo, logMSAL, logPerformanceToConsole, logVerbose, logWarn, removeLogSubscriber, setLoggerConfiguration } from '../../utils/logger';
+import { elapsedTimeInSeconds } from '../../utils/formatTimeHelpers';
+import {
+    addLogSubscriber,
+    logError,
+    logInfo,
+    logMSAL,
+    logPerformanceToConsole,
+    logVerbose,
+    logWarn,
+    removeLogSubscriber,
+    setLoggerConfiguration
+} from '../../utils/logger';
 
 // Mock the time helpers so that we can control the timing in the tests
 // Do note that we seemingly need to have the jest.mock _before_ the import statement to have thing work properly...
 jest.mock('../../utils/formatTimeHelpers');
-import { elapsedTimeInSeconds } from '../../utils/formatTimeHelpers';
 
 describe('Logger behaves as expected', () => {
     let logSpy, warnSpy, errorSpy;
-    
+
     const mockElapsedTimeInSeconds = elapsedTimeInSeconds as jest.Mock;
 
     beforeEach(() => {
@@ -22,7 +32,7 @@ describe('Logger behaves as expected', () => {
         errorSpy.mockReset();
         mockElapsedTimeInSeconds.mockReset();
     });
-    
+
     it('when log flag is set to disabled does not log anything', () => {
         // :: Arrange
         setLoggerConfiguration({
@@ -167,7 +177,7 @@ describe('Logger behaves as expected', () => {
             notifyLogSubscribers: false,
             isMSALLoggingEnabled: false
         });
-        
+
         mockElapsedTimeInSeconds.mockReturnValue(0.1);
 
         // :: Act
@@ -194,7 +204,7 @@ describe('Logger behaves as expected', () => {
             notifyLogSubscribers: false,
             isMSALLoggingEnabled: false
         });
-        
+
         mockElapsedTimeInSeconds.mockReturnValue(0.4);
 
         // :: Act
@@ -211,7 +221,7 @@ describe('Logger behaves as expected', () => {
         expect(warnSpy).not.toBeCalled();
         expect(errorSpy).not.toBeCalled();
     });
-    
+
     it('logPerformanceToConsole RED', () => {
         // :: Arrange
         setLoggerConfiguration({
@@ -221,7 +231,7 @@ describe('Logger behaves as expected', () => {
             notifyLogSubscribers: false,
             isMSALLoggingEnabled: false
         });
-        
+
         mockElapsedTimeInSeconds.mockReturnValue(1.23456);
 
         // :: Act
