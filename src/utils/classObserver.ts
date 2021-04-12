@@ -13,7 +13,7 @@ export interface ObserverInterface {
  * Utility class to ease usage of a subscription pattern - i.e. if one needs to have subscriptions (callable functions)
  * from consumers, this helper class will handle it, ensuring that subscribers are being persisted and notified when
  * required.
- * 
+ *
  * The class was copied as-is from EchoCore and was written by Hanne Kottum - all credits to her.
  */
 class ClassObserver {
@@ -27,7 +27,7 @@ class ClassObserver {
 
     /**
      * Add a subscriber to the observer.
-     * Later the implementing class can call {@link notify} to notify all subscribers of a given type. 
+     * Later the implementing class can call {@link notify} to notify all subscribers of a given type.
      * @param callback the callback function to be called on {@link notify}
      * @param type the "type" of subscriber
      * @returns {@link ObserverIdentifier}, a unique id identifying the subscriber

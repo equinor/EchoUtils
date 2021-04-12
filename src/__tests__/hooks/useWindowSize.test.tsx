@@ -1,14 +1,15 @@
-import { useWindowSize } from "../hooks/useWindowSize";
-import { renderHook } from '@testing-library/react-hooks';
-import { fireEvent } from "@testing-library/dom";
+import { fireEvent } from '@testing-library/dom';
+import { act, renderHook } from '@testing-library/react-hooks';
+import { useWindowSize } from '../..';
 
-// Inspired from https://alexboffey.co.uk/blog/jest-window-mock/ 
+// Inspired from https://alexboffey.co.uk/blog/jest-window-mock/
 describe('useWindowSize', () => {
     // We need to mock the windows sizes which reside in the global object. This interface will be our mock implementation
     // of the properties under testing from the global object.
-    const customGlobal : any = global
-    customGlobal.innerWidth = 500
-    customGlobal.innerHeight = 800
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const customGlobal: any = global;
+    customGlobal.innerWidth = 500;
+    customGlobal.innerHeight = 800;
 
     it('Initial values are set as expected', () => {
         // :: Act
@@ -21,13 +22,16 @@ describe('useWindowSize', () => {
 
     it('Resize event updates the size properties', () => {
         // :: Arrange
-        const { result } = renderHook(() => useWindowSize());        
+        const { result } = renderHook(() => useWindowSize());
         customGlobal.innerWidth = 1000;
         customGlobal.innerHeight = 1200;
 
         // :: Act
-        fireEvent(customGlobal, new Event('resize'));
 
+        act(() => {
+            fireEvent(customGlobal, new Event('resize'));
+            /* fire events that update state */
+        });
         // :: Assert
         expect(result.current.width).toEqual(1000);
         expect(result.current.height).toEqual(1200);

@@ -15,7 +15,8 @@
         "test-coverage": "npm ci & jest --coverage --watchAll",
         "patch": "npm version patch",
         "major": "npm version major",
-        "minor": "npm version minor"
+        "minor": "npm version minor",
+        "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color"
     },
     "author": "Echo Core",
     "license": "MIT",
@@ -32,9 +33,9 @@
         "@babel/preset-react": "^7.12.13",
         "@babel/preset-typescript": "^7.13.0",
         "@rollup/plugin-typescript": "^8.0.0",
-        "@testing-library/react-hooks": "^5.1.0",
         "@testing-library/dom": "^7.29.4",
         "@testing-library/react": "^11.2.3",
+        "@testing-library/react-hooks": "^5.1.0",
         "@types/jest": "^26.0.20",
         "@types/react": "^17.0.0",
         "@types/react-test-renderer": "^17.0.0",

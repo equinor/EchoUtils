@@ -1,5 +1,11 @@
-import { dateToStringOrEmpty, diffHours, diffMinutes, elapsedTimeInSeconds, elapsedTimeInSecondsBetween, elapsedTimeInSecondsToFixed } from "../../utils/formatTimeHelpers";
-
+import {
+    dateToStringOrEmpty,
+    diffHours,
+    diffMinutes,
+    elapsedTimeInSeconds,
+    elapsedTimeInSecondsBetween,
+    elapsedTimeInSecondsToFixed
+} from '../../utils/formatTimeHelpers';
 
 describe('diffHours', () => {
     it('2.5 hour difference should return 2 hours', () => {
@@ -116,7 +122,6 @@ describe('dateToStringOrEmpty tests', () => {
     });
     it('should convert a real date to human readable string', () => {
         const date = new Date('2020-02-19T13:00:00');
-        console.log('is failing', date.toISOString());
         const actualDate = dateToStringOrEmpty(date);
         expect(actualDate).toContain('13:00:00');
         expect(actualDate).toContain('2020');
@@ -155,7 +160,7 @@ describe('dateToStringOrEmpty tests', () => {
 
 describe('elapsedTimeInSeconds tests', () => {
     it('should return expected 5 seconds for given input', () => {
-        const startTimeInMs = 2_000; 
+        const startTimeInMs = 2_000;
         const endTimeInMs = 7_000;
         performance.now = jest.fn(() => endTimeInMs);
         const inSeconds = elapsedTimeInSeconds(startTimeInMs);
@@ -163,7 +168,7 @@ describe('elapsedTimeInSeconds tests', () => {
     });
 
     it('should return expected seconds with decimals for given input', () => {
-        const startTimeInMs = 2_000; 
+        const startTimeInMs = 2_000;
         const endTimeInMs = 7_123;
         performance.now = jest.fn(() => endTimeInMs);
         const inSeconds = elapsedTimeInSeconds(startTimeInMs);
@@ -173,7 +178,7 @@ describe('elapsedTimeInSeconds tests', () => {
 
 describe('elapsedTimeInSecondsToFixed tests', () => {
     it('elapsedTimeInSecondsToFixed defaults to 2 decimals', () => {
-        const startTimeInMs = 2_000; 
+        const startTimeInMs = 2_000;
         const endTimeInMs = 7_123;
         performance.now = jest.fn(() => endTimeInMs);
         const inSeconds = elapsedTimeInSecondsToFixed(startTimeInMs);
@@ -181,7 +186,7 @@ describe('elapsedTimeInSecondsToFixed tests', () => {
     });
 
     it('elapsedTimeInSecondsToFixed does default rounding as expected', () => {
-        const startTimeInMs = 2_000; 
+        const startTimeInMs = 2_000;
         const endTimeInMs = 3_005;
         performance.now = jest.fn(() => endTimeInMs);
         const inSeconds = elapsedTimeInSecondsToFixed(startTimeInMs);
@@ -189,22 +194,21 @@ describe('elapsedTimeInSecondsToFixed tests', () => {
     });
 
     it('elapsedTimeInSecondsToFixed uses fixed number of decimals', () => {
-        const startTimeInMs = 2_000; 
+        const startTimeInMs = 2_000;
         const endTimeInMs = 7_000;
         performance.now = jest.fn(() => endTimeInMs);
         const inSeconds = elapsedTimeInSecondsToFixed(startTimeInMs);
-        expect(inSeconds).toEqual(5.00);
+        expect(inSeconds).toEqual(5.0);
     });
 
     it('elapsedTimeInSecondsToFixed returns number of decimals according to input', () => {
-        const startTimeInMs = 2_000; 
+        const startTimeInMs = 2_000;
         const endTimeInMs = 7_123.456;
         performance.now = jest.fn(() => endTimeInMs);
         const inSeconds = elapsedTimeInSecondsToFixed(startTimeInMs, 4);
         expect(inSeconds).toEqual(5.1235);
     });
 });
-
 
 function parseJsonDates(dateString1: string, dateString2: string): DateInterface {
     const json = `{"date1": "${dateString1}", "date2": "${dateString2}"}`;
