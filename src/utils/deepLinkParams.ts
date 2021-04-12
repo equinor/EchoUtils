@@ -13,9 +13,9 @@ export function getDeepLinkParams<T extends LinkParam>(
     return linkParams as Required<T>;
 }
 
-export const setDeepLinkParams = (param: string, value: string): void => {
+export const setDeepLinkParams = (param: string, value?: string): void => {
     const queryParams = new URLSearchParams(new URL(window.location.href).search);
-    if (value.length > 0) {
+    if (value && value.length > 0) {
         queryParams.set(param, value);
     } else {
         queryParams.delete(param);
