@@ -11,7 +11,7 @@
         "start": "npm run build && node dist/index.js",
         "echo-publish": "npm publish --access public",
         "echo-test": "npm ci & jest --watchAll",
-        "test": "jest --watchAll",
+        "test": "jest",
         "test-coverage": "npm ci & jest --coverage --watchAll",
         "patch": "npm version patch",
         "major": "npm version major",
