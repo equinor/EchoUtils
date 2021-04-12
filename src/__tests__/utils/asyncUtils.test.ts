@@ -1,4 +1,4 @@
-import { fireAndForget } from '../utils/asyncUtils';
+import { fireAndForget } from '../../utils/asyncUtils';
 
 describe('fireAndForget', () => {
     it('should call the given async function', () => {
