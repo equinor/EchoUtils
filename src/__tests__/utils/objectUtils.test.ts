@@ -1,4 +1,4 @@
-import { arraysIsEqual, objectIsEmpty, objectsIsEqual } from '../utils/objectUtils';
+import { arraysIsEqual, objectIsEmpty, objectsIsEqual } from '../../utils';
 
 describe('objectIsEmpty', () => {
     it('should return true if all values are empty in an object', () => {
