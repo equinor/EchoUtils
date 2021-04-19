@@ -1,7 +1,7 @@
 export { fireAndForget } from './asyncUtils';
 export { ObserverClass } from './classObserver';
 export type { ObserverIdentifier, ObserverInterface } from './classObserver';
-export { availableSearchParams, getDeepLinkParams, setDeepLinkParams } from './deepLinkParams';
+export { defaultSearchParams, getDeepLinkParam, getDeepLinkParams, setDeepLinkParam } from './deepLinkParams';
 export {
     dateToStringOrEmpty,
     diffHours,

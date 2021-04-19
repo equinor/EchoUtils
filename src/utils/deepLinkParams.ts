@@ -1,9 +1,13 @@
-export const availableSearchParams = ['instCode', 'tagNo', 'search'];
+export const defaultSearchParams = ['instCode', 'tagNo', 'search'];
 
 type LinkParam = { [key: string]: string | null };
 
+export function getDeepLinkParam<T extends LinkParam>(param: string): Required<T> {
+    return getDeepLinkParams([param]);
+}
+
 export function getDeepLinkParams<T extends LinkParam>(
-    params: Array<keyof LinkParam> = availableSearchParams
+    params: Array<keyof LinkParam> = defaultSearchParams
 ): Required<T> {
     const queryParams = new URLSearchParams(new URL(window.location.href).search);
     const linkParams = {} as LinkParam;
@@ -13,7 +17,7 @@ export function getDeepLinkParams<T extends LinkParam>(
     return linkParams as Required<T>;
 }
 
-export const setDeepLinkParams = (param: string, value?: string): void => {
+export const setDeepLinkParam = (param: string, value?: string): void => {
     const queryParams = new URLSearchParams(new URL(window.location.href).search);
     if (value && value.length > 0) {
         queryParams.set(param, value);

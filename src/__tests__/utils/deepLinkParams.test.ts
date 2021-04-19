@@ -1,4 +1,4 @@
-import { getDeepLinkParams, setDeepLinkParams } from '../../utils';
+import { getDeepLinkParam, getDeepLinkParams, setDeepLinkParam } from '../../utils';
 
 describe('getDeepLinkParams', () => {
     it('Should return instance code with correct value', () => {
@@ -6,7 +6,7 @@ describe('getDeepLinkParams', () => {
         const url = `/?instCode=${instCode}`;
 
         window.history.pushState({}, 'title', url);
-        const queryParams = getDeepLinkParams(['instCode']);
+        const queryParams = getDeepLinkParam('instCode');
 
         expect(queryParams).toStrictEqual({ instCode });
     });
@@ -45,7 +45,7 @@ describe('getDeepLinkParams', () => {
     });
 });
 
-describe('setDeepLinkParams', () => {
+describe('setDeepLinkParam', () => {
     it('Should update url with new query param', () => {
         const instCode = 'JSV';
         const url = `/?instCode=${instCode}`;
@@ -53,7 +53,7 @@ describe('setDeepLinkParams', () => {
 
         const queryParam = 'search';
         const queryValue = 'PT';
-        setDeepLinkParams(queryParam, queryValue);
+        setDeepLinkParam(queryParam, queryValue);
         expect(window.location.href).toContain(`${queryParam}=${queryValue}`);
     });
 
@@ -63,7 +63,7 @@ describe('setDeepLinkParams', () => {
         window.history.pushState({}, 'title', url);
 
         const queryParam = 'instCode';
-        setDeepLinkParams(queryParam);
+        setDeepLinkParam(queryParam);
         expect(window.location.href).not.toContain(url);
     });
 });
