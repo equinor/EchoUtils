@@ -2,6 +2,14 @@
  * Expose utils and hooks here
  */
 
-export * from './hooks';
-export * from './types';
-export * from './utils';
+import * as hooks from './hooks';
+import * as types from './types';
+import * as utils from './utils';
+
+export const EchoUtils = {
+    Hooks: hooks,
+    Types: types,
+    Utils: utils
+};
+
+export default EchoUtils;
