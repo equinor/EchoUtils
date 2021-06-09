@@ -1,11 +1,13 @@
 export type ObserverIdentifier = number;
 
+type Callback = <T>(arg: T) => void;
+
 /**
  * The interface to implement if one wants to use a subscriber pattern on the implementing class.
  */
 export interface ObserverInterface {
     id: ObserverIdentifier;
-    callback: Function;
+    callback: Callback;
     type: string;
 }
 
@@ -14,7 +16,7 @@ export interface ObserverInterface {
  * from consumers, this helper class will handle it, ensuring that subscribers are being persisted and notified when
  * required.
  *
- * The class was copied as-is from EchoCore and was written by Hanne Kottum - all credits to her.
+ * The class was copied as-is from EchoCore and was written by Hanna Bottom - all credits to her.
  */
 class ClassObserver {
     private id: ObserverIdentifier;
@@ -32,7 +34,7 @@ class ClassObserver {
      * @param type the "type" of subscriber
      * @returns {@link ObserverIdentifier}, a unique id identifying the subscriber
      */
-    addSubscriber(callback: Function, type: string): ObserverIdentifier {
+    addSubscriber(callback: Callback, type: string): ObserverIdentifier {
         this.id++;
         const functionCallback = { id: this.id, callback, type };
         this.observers.push(functionCallback);
