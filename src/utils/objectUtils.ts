@@ -101,14 +101,13 @@ export const arraysIsEqual = (
 };
 
 /**
- * Function for finding selected value
+ *
  *
  * @export
- * @param {*} obj
- * @param {*} key
- * @return {*}  {any[]}
+ * @param {Record<string, unknown>} obj
+ * @param {unknown} key
+ * @return {*}  {unknown[]}
  */
-
 export function findValueInObjectValues(obj: Record<string, unknown>, key: unknown): unknown[] {
     let objects: unknown[] = [];
     for (const i in obj) {
