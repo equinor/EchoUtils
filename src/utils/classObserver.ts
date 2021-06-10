@@ -1,13 +1,11 @@
 export type ObserverIdentifier = number;
 
-type Callback = <T>(arg: T) => void;
-
 /**
  * The interface to implement if one wants to use a subscriber pattern on the implementing class.
  */
 export interface ObserverInterface {
     id: ObserverIdentifier;
-    callback: Callback;
+    callback: Function;
     type: string;
 }
 
@@ -34,7 +32,7 @@ class ClassObserver {
      * @param type the "type" of subscriber
      * @returns {@link ObserverIdentifier}, a unique id identifying the subscriber
      */
-    addSubscriber(callback: Callback, type: string): ObserverIdentifier {
+    addSubscriber(callback: Function, type: string): ObserverIdentifier {
         this.id++;
         const functionCallback = { id: this.id, callback, type };
         this.observers.push(functionCallback);
