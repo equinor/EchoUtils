@@ -1,5 +1,4 @@
-![logo](./doc/ee.png)
-
+![logo](https://raw.githubusercontent.com/equinor/EchoUtils/main/doc/ee.png)
 # Echo-Utils
 
 Package for creating echo related Echo Utils.
