@@ -99,3 +99,24 @@ export const arraysIsEqual = (
     }
     return true;
 };
+
+/**
+ *
+ *
+ * @export
+ * @param {Record<string, unknown>} obj
+ * @param {unknown} key
+ * @return {*}  {unknown[]}
+ */
+export function findValueInObjectValues(obj: Record<string, unknown>, key: unknown): unknown[] {
+    let objects: unknown[] = [];
+    for (const i in obj) {
+        if (!obj.hasOwnProperty(i)) continue;
+        if (typeof obj[i] === 'object') {
+            objects = objects.concat(findValueInObjectValues(obj[i] as Record<string, unknown>, key));
+        } else if (i === key) {
+            objects.push(obj[i]);
+        }
+    }
+    return objects;
+}

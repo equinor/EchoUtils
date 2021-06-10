@@ -1,4 +1,5 @@
 import { arraysIsEqual, objectIsEmpty, objectsIsEqual } from '../../utils';
+import { findValueInObjectValues } from '../../utils/objectUtils';
 
 describe('objectIsEmpty', () => {
     it('should return true if all values are empty in an object', () => {
@@ -169,5 +170,17 @@ describe('arraysIsEqual', () => {
         const a2 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 'val'] } }];
         const result = arraysIsEqual(a1, a2);
         expect(result).toBe(false);
+    });
+});
+
+describe('findValueInObjectValues', () => {
+    it('should return selected value', () => {
+        const a = {
+            '1': 1,
+            '2': 2,
+            '3': 3
+        };
+        const result = findValueInObjectValues(a, '1');
+        expect(result).toStrictEqual([1]);
     });
 });
