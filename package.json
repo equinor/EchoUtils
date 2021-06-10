@@ -17,7 +17,8 @@
         "patch": "npm version patch",
         "major": "npm version major",
         "minor": "npm version minor",
-        "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color"
+        "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
+        "build-docs": "npx typedoc --out echo-utils-docs src/index.ts"
     },
     "author": "Echo Core",
     "license": "MIT",
@@ -64,6 +65,7 @@
         "rollup-plugin-typescript-paths": "^1.2.2",
         "rollup-plugin-typescript2": "^0.29.0",
         "rollup-plugin-web-worker-loader": "^1.6.0",
+        "typedoc": "^0.20.35",
         "typescript": "^4.1.2"
     },
     "files": [
