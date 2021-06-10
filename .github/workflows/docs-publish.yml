@@ -22,4 +22,4 @@ jobs:
               with:
                   dir: docs
                   branch: docs
-                  token: ${{ secrets.GITHUB_TOKEN }}
+                  token: ${{ secrets.ACCESS_TOKEN }}
