@@ -13,8 +13,6 @@ export interface ObserverInterface {
  * Utility class to ease usage of a subscription pattern - i.e. if one needs to have subscriptions (callable functions)
  * from consumers, this helper class will handle it, ensuring that subscribers are being persisted and notified when
  * required.
- *
- * The class was copied as-is from EchoCore and was written by Hanna Bottom - all credits to her.
  */
 class ClassObserver {
     private id: ObserverIdentifier;
