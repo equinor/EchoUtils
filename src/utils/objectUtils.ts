@@ -118,7 +118,6 @@ export function findValueInObjectValues(obj: Record<string, unknown>, key: unkno
         } else if (i === key) {
             objects.push(obj[i]);
         }
-        console.log(objects);
     }
     return objects;
 }
