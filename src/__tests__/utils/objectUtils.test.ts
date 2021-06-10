@@ -1,4 +1,4 @@
-import { arraysIsEqual, objectIsEmpty, objectsIsEqual } from '../../utils';
+import { deepIsEqual, objectIsEmpty } from '../../utils/objectUtils';
 
 describe('objectIsEmpty', () => {
     it('should return true if all values are empty in an object', () => {
@@ -74,7 +74,7 @@ describe('objectIsEmpty', () => {
     });
 });
 
-describe('objectsIsEqual', () => {
+describe('deepIsEqual with objects', () => {
     it('should return true if all values in the objects are equal', () => {
         const testObject1 = {
             val1: 'val',
@@ -86,7 +86,7 @@ describe('objectsIsEqual', () => {
             val2: [1, 2, 3],
             val3: { prop1: true }
         };
-        const result = objectsIsEqual(testObject1, testObject2);
+        const result = deepIsEqual(testObject1, testObject2);
         expect(result).toBe(true);
     });
     it('should return false if any values are not equal', () => {
@@ -100,7 +100,7 @@ describe('objectsIsEqual', () => {
             val2: [1, 2, 3],
             val3: { prop1: false }
         };
-        const result = objectsIsEqual(testObject1, testObject2);
+        const result = deepIsEqual(testObject1, testObject2);
         expect(result).toBe(false);
     });
     it('should return false if key names do not match', () => {
@@ -114,7 +114,7 @@ describe('objectsIsEqual', () => {
             val2: [1, 2, 3],
             val4: { prop1: true }
         };
-        const result = objectsIsEqual(testObject1, testObject2);
+        const result = deepIsEqual(testObject1, testObject2);
         expect(result).toBe(false);
     });
     it('should ignore the order of the properties', () => {
@@ -128,46 +128,46 @@ describe('objectsIsEqual', () => {
             val1: 'val',
             val3: { prop1: true }
         };
-        const result = objectsIsEqual(testObject1, testObject2);
+        const result = deepIsEqual(testObject1, testObject2);
         expect(result).toBe(true);
     });
 });
 
-describe('arraysIsEqual', () => {
+describe('deepIsEqual with arrays', () => {
     it('should return true if all values are equal in the arrays', () => {
         const a1 = [1, 'val', 3, 4];
         const a2 = [1, 'val', 3, 4];
-        const result = arraysIsEqual(a1, a2);
+        const result = deepIsEqual(a1, a2);
         expect(result).toBe(true);
     });
     it('should return false if not all values are equal in the arrays', () => {
         const a1 = [1, 'val', 3, 4];
         const a2 = [1, 2, 3, 4];
-        const result = arraysIsEqual(a1, a2);
+        const result = deepIsEqual(a1, a2);
         expect(result).toBe(false);
     });
     it('should return false if the values do not have the same order and ignoreOrder flag is not passed', () => {
         const a1 = [1, 2, 3, 4];
         const a2 = [1, 3, 2, 4];
-        const result = arraysIsEqual(a1, a2);
+        const result = deepIsEqual(a1, a2);
         expect(result).toBe(false);
     });
     it('should return true if the values do not have the same order and ignoreOrder flag is passed', () => {
         const a1 = [1, 2, 3, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 3] } }, 4];
         const a2 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 3] } }];
-        const result = arraysIsEqual(a1, a2, true);
+        const result = deepIsEqual(a1, a2, true);
         expect(result).toBe(true);
     });
     it('should return true for equal arrays with object and array values', () => {
         const a1 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 3] } }];
         const a2 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 3] } }];
-        const result = arraysIsEqual(a1, a2);
+        const result = deepIsEqual(a1, a2);
         expect(result).toBe(true);
     });
     it('should return false for non-equal arrays with object and array values', () => {
         const a1 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 3] } }];
         const a2 = [1, 2, 3, 4, { prop1: 1, prop2: { nestedProp1: 'val', nestedProp2: [1, 2, 'val'] } }];
-        const result = arraysIsEqual(a1, a2);
+        const result = deepIsEqual(a1, a2);
         expect(result).toBe(false);
     });
 });

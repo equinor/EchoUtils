@@ -8,8 +8,8 @@
 export const objectIsEmpty = (obj: Record<string, any>): boolean => {
     const keys = Object.keys(obj);
 
-    for (let i = 0; i < keys.length; i++) {
-        const val = obj[keys[i]];
+    for (const key of keys) {
+        const val = obj[key];
         if (val.length > 0 || typeof val === 'number' || typeof val === 'boolean') {
             return false;
         }
@@ -39,8 +39,7 @@ export const objectsIsEqual = (obj1: Record<string, unknown>, obj2: Record<strin
     obj2Keys.sort();
     if (!arraysIsEqual(obj1Keys, obj2Keys)) return false;
 
-    for (let i = 0; i < obj1Keys.length; i++) {
-        const key = obj1Keys[i];
+    for (const key of obj1Keys) {
         const val1 = obj1[key];
         const val2 = obj2[key];
 
@@ -99,3 +98,30 @@ export const arraysIsEqual = (
     }
     return true;
 };
+
+/**
+ * Function for checking deep equality of either objects or arrays.
+ *
+ * @export
+ * @param {(Array<unknown> | Record<string, unknown>)} val1
+ * @param {(Array<unknown> | Record<string, unknown>)} val2
+ * @param {boolean} [ignoreArrayOrder]
+ * @return {*}  {boolean}
+ */
+export function deepIsEqual(
+    val1: Array<unknown> | Record<string, unknown>,
+    val2: Array<unknown> | Record<string, unknown>,
+    ignoreArrayOrder?: boolean
+): boolean {
+    if (
+        val1 !== undefined &&
+        typeof val1 === 'object' &&
+        !Array.isArray(val1) &&
+        val2 !== undefined &&
+        typeof val2 === 'object' &&
+        !Array.isArray(val2)
+    ) {
+        return objectsIsEqual(val1, val2);
+    }
+    return arraysIsEqual(val1 as Array<unknown>, val2 as Array<unknown>, ignoreArrayOrder);
+}
