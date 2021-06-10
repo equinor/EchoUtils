@@ -3,12 +3,11 @@
  */
 
 import * as hooks from './hooks';
-import * as types from './types';
 import * as utils from './utils';
+export * from './types';
 
 export const EchoUtils = {
     Hooks: hooks,
-    Types: types,
     Utils: utils
 };
 
