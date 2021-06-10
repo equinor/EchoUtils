@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Check out
-              uses: actions/checkout@v2
+              uses: actions/checkout@v2.3.1
               with:
                   ref: main
 
@@ -19,9 +19,8 @@ jobs:
                   npm install
                   npm run build-docs
 
-            - name: Publish generated content to GitHub Pages
-              uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
+            - name: Deploy Docs
+              uses: JamesIves/github-pages-deploy-action@4.1.4
               with:
-                  dir: docs
-                  branch: docs
-                  token: ${{ secrets.ACCESS_TOKEN }}
+                branch: docs
+                folder: docs
