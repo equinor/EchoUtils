@@ -12,9 +12,10 @@ jobs:
             - name: Check out
               uses: actions/checkout@v1
 
-            - name: Generate your awesome content
-              run: npm install
-              run: npm run build-docs
+            - name: Generate Docs
+              run: |
+                  npm install
+                  npm run build-docs
 
             - name: Publish generated content to GitHub Pages
               uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
