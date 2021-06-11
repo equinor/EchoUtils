@@ -1,5 +1,5 @@
 interface Filter {
-    [key: string]: string | number | boolean;
+    [key: string]: string | number | boolean | Date;
 }
 
 /**
@@ -19,7 +19,11 @@ export function filterOnProps<T>(data: T[], propsToFilterOn: Filter): T[] {
         filteredData = data.filter((d) => {
             if (typeof d === 'object' && d !== null && !Array.isArray(d)) {
                 if ((d as Record<string, unknown>).hasOwnProperty(filter)) {
-                    return (d as Record<string, unknown>)[filter] === propsToFilterOn[filter];
+                    const filterValueFromData = (d as Record<string, unknown>)[filter];
+                    const filterValueFromFilter = propsToFilterOn[filter];
+                    return filterValueFromData instanceof Date && filterValueFromFilter instanceof Date
+                        ? filterValueFromData.getTime() === filterValueFromFilter.getTime()
+                        : filterValueFromData === filterValueFromFilter;
                 } else return true;
             }
         });
