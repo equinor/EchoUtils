@@ -1,6 +1,6 @@
 {
     "name": "@equinor/echo-utils",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "description": "Utils and hooks for echo web project",
     "main": "dist/index.js",
     "types": "dist/types/index.d.ts",
@@ -18,7 +18,7 @@
         "major": "npm version major",
         "minor": "npm version minor",
         "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
-        "build-docs": "npx typedoc --out echo-utils-docs src/index.ts"
+        "build-docs": "npx typedoc --out docs src/docs.ts"
     },
     "author": "Echo Core",
     "license": "MIT",
