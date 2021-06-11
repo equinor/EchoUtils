@@ -23,4 +23,4 @@ export {
     setLoggerConfiguration
 } from './logger';
 export type { LoggerConfiguration, SubscriberCallbackFunction } from './logger';
-export { arraysIsEqual, objectIsEmpty, objectsIsEqual } from './objectUtils';
+export { arraysIsEqual, findValueInObjectValues, objectIsEmpty, objectsIsEqual } from './objectUtils';
