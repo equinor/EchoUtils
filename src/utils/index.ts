@@ -11,6 +11,7 @@ export {
     elapsedTimeInSecondsBetween,
     elapsedTimeInSecondsToFixed
 } from './formatTimeHelpers';
+export { getKeyByValue } from './getKeyByValue';
 export {
     addLogSubscriber,
     logError,
