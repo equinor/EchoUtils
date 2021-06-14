@@ -94,12 +94,13 @@ export function logWarn(...args: any[]): void {
 export function logError(...args: any[]): void {
     localLog(LogType.Error, ...args);
 }
-
+/* istanbul ignore next */
 const isIOS = (): boolean => {
     const mac = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
     return mac;
 };
 
+/* istanbul ignore next */
 function getStackCallerFunctionName(err: any): string {
     let caller = err.stack.includes('logErrorToAppInsights')
         ? err.stack.split('\n')[9]
@@ -112,6 +113,7 @@ function getStackCallerFunctionName(err: any): string {
     return caller;
 }
 
+/* istanbul ignore next */
 function localLog(logType: LogType, ...args: any[]): void {
     if (!config.isEnabled) {
         return;
@@ -133,6 +135,7 @@ function localLog(logType: LogType, ...args: any[]): void {
     }
 }
 
+/* istanbul ignore next */
 function logWithType(logType: LogType, ...args: any[]): void {
     if (logType === LogType.Info) console.log(...args);
     else if (logType === LogType.Warn) console.warn(...args);
