@@ -1,4 +1,4 @@
-import { filterOnProps } from '../utils/filterUtils';
+import { filterOnProps } from '../../utils/filterUtils';
 
 const object1 = {
     prop1: 'prop1',
