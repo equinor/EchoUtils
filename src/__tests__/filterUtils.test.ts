@@ -4,24 +4,21 @@ const object1 = {
     prop1: 'prop1',
     prop2: 'prop2',
     prop3: 3,
-    prop4: new Date(2018, 11, 24, 10, 33, 30, 0),
-    propObj: {}
+    prop4: new Date(2018, 11, 24, 10, 33, 30, 0)
 };
 
 const object2 = {
     prop1: 'prop1',
     prop2: 'prop2',
     prop3: 'prop3',
-    prop4: new Date(2019, 11, 24, 10, 33, 30, 0),
-    propObj: {}
+    prop4: new Date(2019, 11, 24, 10, 33, 30, 0)
 };
 
 const object3 = {
     prop1: 'prop1',
     prop2: 'prop3',
     prop3: true,
-    prop4: new Date(2020, 11, 24, 10, 33, 30, 0),
-    propObj: {}
+    prop4: new Date(2020, 11, 24, 10, 33, 30, 0)
 };
 
 describe('filterOnProps', () => {
