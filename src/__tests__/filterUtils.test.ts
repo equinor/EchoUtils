@@ -4,21 +4,24 @@ const object1 = {
     prop1: 'prop1',
     prop2: 'prop2',
     prop3: 3,
-    prop4: new Date(2018, 11, 24, 10, 33, 30, 0)
+    prop4: new Date(2018, 11, 24, 10, 33, 30, 0),
+    propObj: {}
 };
 
 const object2 = {
     prop1: 'prop1',
     prop2: 'prop2',
     prop3: 'prop3',
-    prop4: new Date(2019, 11, 24, 10, 33, 30, 0)
+    prop4: new Date(2019, 11, 24, 10, 33, 30, 0),
+    propObj: {}
 };
 
 const object3 = {
     prop1: 'prop1',
     prop2: 'prop3',
     prop3: true,
-    prop4: new Date(2020, 11, 24, 10, 33, 30, 0)
+    prop4: new Date(2020, 11, 24, 10, 33, 30, 0),
+    propObj: {}
 };
 
 describe('filterOnProps', () => {
@@ -59,7 +62,7 @@ describe('filterOnProps', () => {
     it('if the provided filter only has one matching key, it should only consider that key when filtering', () => {
         const data = [object1, object2, object3];
 
-        const filteredData = filterOnProps(data, { prop4: 'prop3', prop5: 'prop99', prop3: true });
+        const filteredData = filterOnProps(data, { prop6: 'prop3', prop5: 'prop99', prop3: true });
         expect(filteredData).toEqual([object3]);
     });
 });
