@@ -1,6 +1,4 @@
-export type Filter<T> = {
-    [K in keyof T]: T[K];
-};
+import { Filter } from '../types/filterUtils';
 
 /**
  * A function for filtering lists of objects.
