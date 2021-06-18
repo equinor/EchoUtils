@@ -1,6 +1,4 @@
-interface Filter {
-    [key: string]: string | number | boolean | Date;
-}
+import { Filter } from '../types/filterUtils';
 
 /**
  * A function for filtering lists of objects.
@@ -12,7 +10,7 @@ interface Filter {
  * @param {Filter} propsToFilterOn
  * @return {*}  {T[]}
  */
-export function filterOnProps<T>(data: T[], propsToFilterOn: Filter): T[] {
+export function filterOnProps<T>(data: T[], propsToFilterOn: Filter<T>): T[] {
     const filters = Object.keys(propsToFilterOn);
     let filterData: T[] = data;
     for (const filter of filters) {
