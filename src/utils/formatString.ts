@@ -8,5 +8,6 @@
  */
 export function formatString(...args: (string | undefined)[]): string {
     const strings = args.filter((arg) => arg !== undefined);
-    return strings.length > 0 ? strings.join('-') : '-';
+    const string = strings.length > 0 ? strings.join('-') : '-';
+    return string === '' ? '-' : string;
 }
