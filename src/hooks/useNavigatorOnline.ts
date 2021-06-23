@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 /**
- *
+ * Function for getting the online status of the client
  *
  * @return {*}  {boolean}
  */
@@ -9,7 +9,7 @@ export const getOnLineStatus = (): boolean =>
     typeof navigator !== 'undefined' && typeof navigator.onLine === 'boolean' ? navigator.onLine : true;
 
 /**
- *
+ * Checks if the client is online or offline and update accordingly.
  *
  * @return {*}  {boolean}
  */
