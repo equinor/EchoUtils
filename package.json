@@ -1,6 +1,6 @@
 {
     "name": "@equinor/echo-utils",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Utils and hooks for echo web project",
     "main": "dist/index.js",
     "types": "dist/types/index.d.ts",
@@ -38,7 +38,7 @@
         "@testing-library/dom": "^7.29.4",
         "@testing-library/react": "^11.2.3",
         "@testing-library/react-hooks": "^5.1.0",
-        "@types/jest": "^26.0.20",
+        "@types/jest": "^26.0.24",
         "@types/react": "^17.0.0",
         "@types/react-test-renderer": "^17.0.0",
         "@typescript-eslint/eslint-plugin": "^2.34.0",
