@@ -5,7 +5,7 @@ describe('generateRandomId', () => {
         const id = generateRandomId();
         expect(id.length).toBe(6);
     });
-    it('should return a different string every time', () => {
+    it('should return different strings', () => {
         const id1 = generateRandomId();
         const id2 = generateRandomId();
         expect(id1).not.toEqual(id2);
