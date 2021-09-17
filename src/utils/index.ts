@@ -1,6 +1,7 @@
 export * from './asyncUtils';
 export { ObserverClass } from './classObserver';
 export type { ObserverIdentifier, ObserverInterface } from './classObserver';
+export * from './color';
 export * from './deepLinkParams';
 export * from './filterUtils';
 export * from './formatString';
@@ -10,4 +11,3 @@ export * from './logger';
 export type { LoggerConfiguration, SubscriberCallbackFunction } from './logger';
 export * from './objectUtils';
 export * from './randomIdGenerator';
-
