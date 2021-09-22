@@ -10,4 +10,3 @@ export * from './logger';
 export type { LoggerConfiguration, SubscriberCallbackFunction } from './logger';
 export * from './objectUtils';
 export * from './randomIdGenerator';
-
