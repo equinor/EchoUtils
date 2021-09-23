@@ -1,7 +1,7 @@
 export * from './asyncUtils';
 export { ObserverClass } from './classObserver';
 export type { ObserverIdentifier, ObserverInterface } from './classObserver';
-export * from './color';
+export * as Color from './color';
 export * from './deepLinkParams';
 export * from './filterUtils';
 export * from './formatString';
