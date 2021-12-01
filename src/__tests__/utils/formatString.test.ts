@@ -30,4 +30,8 @@ describe('formatString', () => {
         const test = formatString(undefined, undefined);
         expect(test).toEqual('-');
     });
+    it('should return - if string is empty', () => {
+        const test = formatString('', undefined);
+        expect(test).toEqual('-');
+    });
 });

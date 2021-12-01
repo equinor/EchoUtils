@@ -1,9 +1,9 @@
 name: Publish to GitHub Pages
 
 on:
-    push:
-        branches:
-            - main
+    release:
+        types:
+            - published
 
 jobs:
     publish:
@@ -22,5 +22,5 @@ jobs:
             - name: Deploy Docs
               uses: JamesIves/github-pages-deploy-action@4.1.4
               with:
-                branch: docs
-                folder: docs
+                  branch: docs
+                  folder: docs

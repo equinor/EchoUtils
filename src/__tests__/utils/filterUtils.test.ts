@@ -1,4 +1,4 @@
-import { filterOnProps } from '../utils/filterUtils';
+import { filterOnProps } from '../../utils/filterUtils';
 
 const object1 = {
     prop1: 'prop1',
@@ -59,7 +59,7 @@ describe('filterOnProps', () => {
     it('if the provided filter only has one matching key, it should only consider that key when filtering', () => {
         const data = [object1, object2, object3];
 
-        const filteredData = filterOnProps(data, { prop4: 'prop3', prop5: 'prop99', prop3: true });
+        const filteredData = filterOnProps(data, { prop6: 'prop3', prop5: 'prop99', prop3: true });
         expect(filteredData).toEqual([object3]);
     });
 });

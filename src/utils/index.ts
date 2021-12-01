@@ -1,26 +1,13 @@
-export { fireAndForget } from './asyncUtils';
+export * from './asyncUtils';
 export { ObserverClass } from './classObserver';
 export type { ObserverIdentifier, ObserverInterface } from './classObserver';
-export { defaultSearchParams, getDeepLinkParam, getDeepLinkParams, setDeepLinkParam } from './deepLinkParams';
+export * as Color from './color';
+export * from './deepLinkParams';
+export * from './filterUtils';
 export * from './formatString';
-export {
-    dateToStringOrEmpty,
-    diffHours,
-    diffMinutes,
-    elapsedTimeInSeconds,
-    elapsedTimeInSecondsBetween,
-    elapsedTimeInSecondsToFixed
-} from './formatTimeHelpers';
-export {
-    addLogSubscriber,
-    logError,
-    logInfo,
-    logMSAL,
-    logPerformanceToConsole,
-    logVerbose,
-    logWarn,
-    removeLogSubscriber,
-    setLoggerConfiguration
-} from './logger';
+export * from './formatTimeHelpers';
+export * from './getKeyByValue';
+export * from './logger';
 export type { LoggerConfiguration, SubscriberCallbackFunction } from './logger';
-export { arraysIsEqual, findValueInObjectValues, objectIsEmpty, objectsIsEqual } from './objectUtils';
+export * from './objectUtils';
+export * from './randomIdGenerator';
