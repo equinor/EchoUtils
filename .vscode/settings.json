@@ -102,5 +102,4 @@
         "source.fixAll.eslint": true
     },
     "editor.formatOnSave": true,
-    "terminal.integrated.shellArgs.windows": ["-ExecutionPolicy", "Bypass"],
 }
