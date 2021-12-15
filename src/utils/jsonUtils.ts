@@ -11,6 +11,15 @@ function convertDateHelper(key: any, value: any): any {
     return value;
 }
 
+/**
+ *
+ * Used as an alternative to JSON.parse().
+ * The function will convert dates to Date type when parsing.
+ *
+ * @export
+ * @param {string} jsonString
+ * @return {*}  {any}
+ */
 export function parseJsonWithDate(jsonString: string): any {
     return JSON.parse(jsonString, convertDateHelper);
 }
