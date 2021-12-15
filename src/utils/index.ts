@@ -7,6 +7,7 @@ export * from './filterUtils';
 export * from './formatString';
 export * from './formatTimeHelpers';
 export * from './getKeyByValue';
+export * from './jsonUtils';
 export * from './logger';
 export type { LoggerConfiguration, SubscriberCallbackFunction } from './logger';
 export * from './objectUtils';
