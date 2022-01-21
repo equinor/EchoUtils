@@ -38,7 +38,7 @@ describe('using', () => {
         let isLoading = true;
         expect(isLoading).toBe(true);
         let mainResult = 0;
-        mainResult = using({
+        mainResult = disposable.using({
             runMain: () => {
                 return 5;
             },
@@ -55,7 +55,7 @@ describe('using', () => {
         let mainResult = 0;
         expect(isLoading).toBe(true);
         try {
-            mainResult = using({
+            mainResult = disposable.using({
                 runMain: () => {
                     throwError();
                     return 5;
