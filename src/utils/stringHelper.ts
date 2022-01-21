@@ -3,7 +3,7 @@
  * @param value The specific value to check.
  * @returns Returns true if the string is undefined, empty, contains only white-spaces, or contains double quotes ("").
  */
-export function isNullOrEmpty(value?: string): boolean {
+function isNullOrEmpty(value?: string): boolean {
     value = value?.trim();
     if (value && value === '""') {
         return true;
@@ -16,7 +16,7 @@ export function isNullOrEmpty(value?: string): boolean {
  * @param value The string to check.
  * @returns Returns an empty string if the string isNullOrEmpty, otherwise returns original string.
  */
-export function orEmpty(value?: string): string {
+function orEmpty(value?: string): string {
     if (isNullOrEmpty(value)) return '';
     return value?.trim() || '';
 }
@@ -27,7 +27,7 @@ export function orEmpty(value?: string): string {
  * @param separator Optional separator (defaults to 1 space).
  * @returns All none empty values as one string. Returns empty if all elements are empty.
  */
-export function joinOrEmpty(values: ReadonlyArray<string | undefined>, separator?: string | undefined): string {
+function joinOrEmpty(values: ReadonlyArray<string | undefined>, separator?: string | undefined): string {
     if (!separator) {
         separator = ' ';
     }
@@ -40,7 +40,7 @@ export function joinOrEmpty(values: ReadonlyArray<string | undefined>, separator
  * @param values The list of values
  * @returns Returns the first element which is not empty. Returns empty if all are empty.
  */
-export function firstOrEmpty(values: ReadonlyArray<string | undefined>): string {
+function firstOrEmpty(values: ReadonlyArray<string | undefined>): string {
     const result = values.find((element) => !isNullOrEmpty(element));
     return orEmpty(result);
 }

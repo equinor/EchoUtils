@@ -8,7 +8,7 @@
  * @param isEqual Optional compare function.
  * @returns A new array without duplicates.
  */
-export function distinct<T>(array: ReadonlyArray<T>, isEqual?: (a: T, b: T) => boolean): T[] {
+function distinct<T>(array: ReadonlyArray<T>, isEqual?: (a: T, b: T) => boolean): T[] {
     const isAllPropertiesEqualFunction = (a: T, b: T) => JSON.stringify(a) === JSON.stringify(b);
     const isItemsEqual = isEqual || isAllPropertiesEqualFunction;
     return array.filter(
