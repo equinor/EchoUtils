@@ -1,3 +1,5 @@
+import { formatString } from '.';
+
 /**
  * Returns true if the specified string is undefined, empty, contains only white-spaces, or contains double quotes ("").
  * @param value The specific value to check.
@@ -49,5 +51,6 @@ export const stringHelper = {
     isNullOrEmpty,
     orEmpty,
     firstOrEmpty,
-    joinOrEmpty
+    joinOrEmpty,
+    formatToUi: formatString
 };

@@ -1,6 +1,7 @@
 /**
- * Used for formatting string to echo standard.
- * will handle undefined as input argument.
+ * Used for formatting string to echo standard, with - as separator.
+ * Returns - if the joined string is empty.
+ * Will handle undefined as input argument.
  *
  * @export
  * @param {(...(string | undefined)[])} args
