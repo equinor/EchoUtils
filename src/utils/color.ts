@@ -73,29 +73,4 @@ export function calculateBrighterHexColor(
     );
 }
 
-describe('calculateBrighterHexColor', () => {
-    it('should return the correct brighter hex code based on given percentage', () => {
-        // given
-        const redHex = '#fF0000';
-        const fiftyPercentBrighterRedHex = '#ff8080';
-
-        // when
-        const result = calculateBrighterHexColor(redHex, 50);
-
-        // then
-        expect(result).toBe(fiftyPercentBrighterRedHex);
-    });
-
-    it('should return undefined if an invalid hex code is given', () => {
-        // given
-        const invalidHex = 'Not a hex code';
-
-        // when
-        const result = calculateBrighterHexColor(invalidHex, 50);
-
-        // then
-        expect(result).toBe(undefined);
-    });
-});
-
 export const colorHelper = { getColorStatusFromString, stringToColour, hexColorToRgb, calculateBrighterHexColor };
