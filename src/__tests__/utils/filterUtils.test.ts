@@ -1,20 +1,27 @@
 import { filterOnProps } from '../../utils/filterUtils';
 
-const object1 = {
+interface Props {
+    prop1?: string;
+    prop2?: string;
+    prop3?: unknown;
+    prop4?: unknown;
+}
+
+const object1: Props = {
     prop1: 'prop1',
     prop2: 'prop2',
     prop3: 3,
     prop4: new Date(2018, 11, 24, 10, 33, 30, 0)
 };
 
-const object2 = {
+const object2: Props = {
     prop1: 'prop1',
     prop2: 'prop2',
     prop3: 'prop3',
     prop4: new Date(2019, 11, 24, 10, 33, 30, 0)
 };
 
-const object3 = {
+const object3: Props = {
     prop1: 'prop1',
     prop2: 'prop3',
     prop3: true,
@@ -25,7 +32,7 @@ describe('filterOnProps', () => {
     it('should return unfiltered data if filter prop does not exist', () => {
         const data = [object1, object2, object3];
 
-        const filteredData = filterOnProps(data, { prop5: 2 });
+        const filteredData = filterOnProps(data, { prop5: 2 } as Props);
         expect(filteredData).toEqual(data);
     });
     it('should return filtered data if filter prop exists, and the value matches', () => {
@@ -59,7 +66,7 @@ describe('filterOnProps', () => {
     it('if the provided filter only has one matching key, it should only consider that key when filtering', () => {
         const data = [object1, object2, object3];
 
-        const filteredData = filterOnProps(data, { prop6: 'prop3', prop5: 'prop99', prop3: true });
+        const filteredData = filterOnProps(data, { prop6: 'prop3', prop5: 'prop99', prop3: true } as Props);
         expect(filteredData).toEqual([object3]);
     });
 });
