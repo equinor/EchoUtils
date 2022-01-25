@@ -1,6 +1,6 @@
 {
     "name": "@equinor/echo-utils",
-    "version": "0.2.6",
+    "version": "0.2.7",
     "description": "Utils and hooks for echo web project",
     "main": "dist/index.js",
     "types": "dist/types/index.d.ts",
@@ -33,7 +33,7 @@
         "react-cool-onclickoutside": "^1.7.0"
     },
     "devDependencies": {
-        "@babel/core": "^7.16.10",
+        "@babel/core": "^7.16.12",
         "@babel/preset-env": "^7.16.11",
         "@babel/preset-react": "^7.16.7",
         "@babel/preset-typescript": "^7.16.7",
@@ -45,8 +45,8 @@
         "@types/jest": "^27.4.0",
         "@types/react": "^17.0.38",
         "@types/react-test-renderer": "^17.0.1",
-        "@typescript-eslint/eslint-plugin": "^5.10.0",
-        "@typescript-eslint/parser": "5.10.0",
+        "@typescript-eslint/eslint-plugin": "^5.10.1",
+        "@typescript-eslint/parser": "5.10.1",
         "babel-jest": "^27.4.6",
         "eslint": "^8.7.0",
         "eslint-config-prettier": "^8.3.0",
@@ -59,7 +59,7 @@
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-test-renderer": "^17.0.2",
-        "rollup": "^2.64.0",
+        "rollup": "^2.66.1",
         "rollup-plugin-babel": "^4.4.0",
         "rollup-plugin-commonjs": "^10.1.0",
         "rollup-plugin-delete": "^2.0.0",
