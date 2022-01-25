@@ -1,4 +1,5 @@
 ![logo](https://raw.githubusercontent.com/equinor/EchoUtils/main/doc/ee.png)
+
 # Echo-Utils
 
 Package for creating echo related Echo Utils.
@@ -10,12 +11,12 @@ Package for creating echo related Echo Utils.
 
 /bundlephobia/:format/:packageName
 
-- [Echo-Utils](#echo-utils)
-- [Install](#install)
-    - [NPM](#npm)
-- [Development](#development)
-  - [Run](#run)
-  - [Test](#test)
+-   [Echo-Utils](#echo-utils)
+-   [Install](#install)
+    -   [NPM](#npm)
+-   [Development](#development)
+    -   [Run](#run)
+    -   [Test](#test)
 
 # Install
 
@@ -48,3 +49,7 @@ For abetter overview, run tests with test coverage.
 ```sh-session
 npm run test-coverage
 ```
+
+## Documentation
+
+Documentation generated using [typedoc](https://www.npmjs.com/package/typedoc) can be found [here](https://equinor.github.io/EchoUtils/).
