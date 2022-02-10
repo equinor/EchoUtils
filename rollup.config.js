@@ -32,7 +32,9 @@ export default [
                     '@dbeining/react-atom': ['Atom', 'useAtom', 'deref', 'swap']
                 }
             }),
-            resolve()
+            resolve({
+                preferBuiltins: true
+            })
         ]
     },
     {
