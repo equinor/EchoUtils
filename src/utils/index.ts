@@ -1,3 +1,4 @@
+export * from './apiUtils';
 export * from './asyncUtils';
 export { ObserverClass } from './classObserver';
 export type { ObserverIdentifier, ObserverInterface } from './classObserver';
