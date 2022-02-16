@@ -3,6 +3,22 @@ import React, { useEffect } from 'react';
 type AsyncEffect = (signal: AbortSignal) => Promise<void | (() => void)> | void;
 
 /**
+ *
+ * Wrapper for useEffect which provides an abort signal that can be used for mounted state checks,
+ * as well as for aborting async https requests in progress if added to header.
+ *
+ * example:
+ * useEffectAsync(async (signal) => {
+ *       const response = await request();
+ *       if (!signal.aborted) {
+ *           setState("some value")
+ *       }
+ *
+ *       return () => {
+ *           optionalCleanup();
+ *       }
+ * }, [])
+ *
  * Accepts a function that contains imperative, possibly effectful code.
  * @export
  * @param effect Imperative async function that can return a cleanup function. Also provides AbortSignal as input to handle cancellation of setstate/http requests
