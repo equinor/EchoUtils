@@ -5,7 +5,7 @@ type AsyncEffect = (signal: AbortSignal) => Promise<void | (() => void)> | void;
 /**
  * Accepts a function that contains imperative, possibly effectful code.
  * @export
- * @param effect Imperative async function that can return a cleanup function
+ * @param effect Imperative async function that can return a cleanup function. Also provides AbortSignal as input to handle cancellation of setstate/http requests
  * @param deps If present, effect will only activate if the values in the list change.
  */
 export function useEffectAsync(effect: AsyncEffect, deps: React.DependencyList = []): void {
