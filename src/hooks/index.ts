@@ -6,5 +6,3 @@ export * from './useInitial';
 export * from './useNavigatorOnline';
 export { useOnOutsideClick } from './useOnOutsideClick';
 export { useWindowSize } from './useWindowSize';
-
-
