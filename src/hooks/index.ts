@@ -1,5 +1,6 @@
 export * from './useCleanup';
 export { useDebounce } from './useDebounce';
+export * from './useEffectAsync';
 export { useFocus } from './useFocus';
 export * from './useInitial';
 export { useIsIosDevice } from './useIsIosDevice';
