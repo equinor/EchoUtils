@@ -1,3 +1,8 @@
+/**
+ * Ping a given url.
+ * @param url {string} Url to ping.
+ * @returns {boolean} If the given url is reachable or not
+ */
 export const ping = async (url: string): Promise<boolean> => {
     let isReachable = false;
     try {
