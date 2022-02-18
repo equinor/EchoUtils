@@ -1,4 +1,4 @@
-import { generateRandomId } from '../../utils/randomIdGenerator';
+import { generateRandomId } from './randomIdGenerator';
 
 describe('generateRandomId', () => {
     it('should return a six character string', () => {

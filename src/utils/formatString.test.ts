@@ -1,4 +1,4 @@
-import { formatString } from '../../utils/formatString';
+import { formatString } from './formatString';
 
 describe('formatString', () => {
     it('should return test-test', () => {

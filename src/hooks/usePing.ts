@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { ping } from '../utils';
-
 interface IntranetCheck {
     isSourceAvailable: boolean;
 }
@@ -9,6 +8,7 @@ interface CachedPing {
     pingTask: Promise<boolean>;
     timestamp: Date;
 }
+
 const cachedPings: Record<string, CachedPing> = {};
 
 function dateDifferenceInSeconds(date1?: Date, date2?: Date): number {
@@ -39,6 +39,13 @@ async function pingSourceWithCache(
     }
 }
 
+/**
+ *
+ * @param source string - The url path to ping.
+ * @param useCachedPing boolean - Use a cached result of an earlier ping.
+ * @param renewCacheSeconds  number - Overwrite cache after this given seconds.
+ * @returns { isSourceAvailable: boolean; }
+ */
 export function usePing(source: string, useCachedPing = true, renewCacheSeconds = 30): IntranetCheck {
     const [isSourceAvailable, setIsSourceAvailable] = useState<boolean>(false);
 

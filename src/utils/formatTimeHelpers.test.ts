@@ -5,7 +5,7 @@ import {
     elapsedTimeInSeconds,
     elapsedTimeInSecondsBetween,
     elapsedTimeInSecondsToFixed
-} from '../../utils/formatTimeHelpers';
+} from './formatTimeHelpers';
 
 describe('diffHours', () => {
     it('2.5 hour difference should return 2 hours', () => {

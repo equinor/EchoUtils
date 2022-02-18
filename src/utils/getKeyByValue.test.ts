@@ -1,4 +1,4 @@
-import { getKeyByValue } from '../../utils/getKeyByValue';
+import { getKeyByValue } from './getKeyByValue';
 
 describe('getKeyByValue', () => {
     it('should return myKey and not myKey2', () => {

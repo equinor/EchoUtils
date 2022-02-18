@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
 import { screen } from '@testing-library/dom';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
+import React, { FC } from 'react';
 import { Callback } from '../../types/useOnOutsideClick';
-import { useOnOutsideClick } from '../../hooks/useOnOutsideClick';
+import { useOnOutsideClick } from './useOnOutsideClick';
 
 interface Props {
     callback: Callback;
