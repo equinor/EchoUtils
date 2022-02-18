@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { useCleanup } from '../../hooks/useCleanup';
+import { useCleanup } from './useCleanup';
 
 test('should should not be called once', () => {
     const func = jest.fn();
