@@ -4,6 +4,7 @@ export * from './useEffectAsync';
 export { useFocus } from './useFocus';
 export * from './useInitial';
 export { useIsIosDevice } from './useIsIosDevice';
+export { useIsSmallScreen } from './useIsSmallScreen';
 export * from './useNavigatorOnline';
 export { useOnOutsideClick } from './useOnOutsideClick';
 export { usePing } from './usePing';
