@@ -36,7 +36,7 @@ export function diffMinutes(dt2: Date, dt1: Date): number | undefined {
  * Get the difference between two given dates in seconds.
  * @param {Date} date1
  * @param {Date} date2
- * @returns {number}
+ * @returns {number | undefined}
  */
 export function diffSeconds(date1?: Date, date2?: Date): number {
     if (!date1 || !date2) {
