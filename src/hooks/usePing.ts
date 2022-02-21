@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ping } from '../utils';
+import { diffSeconds, ping } from '../utils';
 interface IntranetCheck {
     isSourceAvailable: boolean;
 }
@@ -11,23 +11,13 @@ interface CachedPing {
 
 const cachedPings: Record<string, CachedPing> = {};
 
-function dateDifferenceInSeconds(date1?: Date, date2?: Date): number {
-    if (!date1 || !date2) {
-        return 9999999;
-    }
-    date2 = new Date(date2); //typescript doesn't know the difference between string and date...
-    date1 = new Date(date1);
-    const diff = Math.abs(date1.getTime() - date2.getTime());
-    return Math.ceil(diff / 1000);
-}
-
 async function pingSourceWithCache(
     source: string,
     useCachedPing: boolean,
     renewCacheSeconds: number
 ): Promise<boolean> {
     const cachedPing = cachedPings[source];
-    const timeDifferenceInSeconds = dateDifferenceInSeconds(cachedPing?.timestamp, new Date());
+    const timeDifferenceInSeconds = diffSeconds(cachedPing?.timestamp, new Date());
 
     if (useCachedPing && cachedPing && timeDifferenceInSeconds < renewCacheSeconds) {
         return await cachedPing.pingTask;

@@ -1,4 +1,4 @@
-import { elapsedTimeInSeconds } from './formatTimeHelpers';
+import { elapsedTimeInSeconds } from './dateHelpers';
 import {
     addLogSubscriber,
     logError,
@@ -13,7 +13,7 @@ import {
 
 // Mock the time helpers so that we can control the timing in the tests
 // Do note that we seemingly need to have the jest.mock _before_ the import statement to have thing work properly...
-jest.mock('./formatTimeHelpers');
+jest.mock('./dateHelpers');
 
 describe('Logger behaves as expected', () => {
     let logSpy, warnSpy, errorSpy;

@@ -2,10 +2,11 @@ import {
     dateToStringOrEmpty,
     diffHours,
     diffMinutes,
+    diffSeconds,
     elapsedTimeInSeconds,
     elapsedTimeInSecondsBetween,
     elapsedTimeInSecondsToFixed
-} from './formatTimeHelpers';
+} from './dateHelpers';
 
 describe('diffHours', () => {
     it('2.5 hour difference should return 2 hours', () => {
@@ -44,7 +45,7 @@ describe('diffHours', () => {
 });
 
 describe('diffMinutes', () => {
-    it('1.25 hour difference should return 2 minutes', () => {
+    it('1.25 hour difference should return 75 minutes', () => {
         const date1 = new Date('2020-01-20T00:00:00');
         const date2 = new Date('2020-01-20T01:15:00');
         const result = diffMinutes(date1, date2);
@@ -76,6 +77,32 @@ describe('diffMinutes', () => {
         const dates2 = parseJsonDates('2020-01-19T01:00:00', 'invalid date');
         const result2 = diffMinutes(dates2.date1, dates2.date2);
         expect(result2).toEqual(undefined);
+    });
+});
+
+describe('diffSeconds()', () => {
+    it('should return 45 seconds difference between two dates', () => {
+        // given
+        const date1 = new Date('2020-01-20T23:00:00');
+        const date2 = new Date('2020-01-20T23:00:45');
+
+        // when
+        const result = diffSeconds(date1, date2);
+
+        // then
+        expect(result).toEqual(45);
+    });
+
+    it('should return with a big number in case of non existing dates', () => {
+        // given
+        const date1 = undefined;
+        const date2 = undefined;
+
+        // when
+        const result = diffSeconds(date1, date2);
+
+        // then
+        expect(result).toEqual(9999999);
     });
 });
 

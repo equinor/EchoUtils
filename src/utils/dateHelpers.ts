@@ -1,3 +1,9 @@
+/**
+ * Get the difference between two given dates in hours. Returns undefined if the hours of the passed date are NaN.
+ * @param {Date} date1
+ * @param {Date} date2
+ * @returns {number | undefined}
+ */
 export function diffHours(dt2: Date, dt1: Date): number | undefined {
     dt2 = new Date(dt2); //handle strings disguised as dates after JSON parsing
     dt1 = new Date(dt1);
@@ -9,6 +15,12 @@ export function diffHours(dt2: Date, dt1: Date): number | undefined {
     return Math.abs(Math.round(diff));
 }
 
+/**
+ * Get the difference between two given dates in minutes. Returns undefined if the hours of the passed date are NaN.
+ * @param {Date} date1
+ * @param {Date} date2
+ * @returns {number}
+ */
 export function diffMinutes(dt2: Date, dt1: Date): number | undefined {
     dt2 = new Date(dt2); //handle strings disguised as dates after JSON parsing
     dt1 = new Date(dt1);
@@ -18,6 +30,22 @@ export function diffMinutes(dt2: Date, dt1: Date): number | undefined {
     let diff = (dt2.getTime() - dt1.getTime()) / 1000;
     diff /= 60;
     return Math.abs(Math.round(diff));
+}
+
+/**
+ * Get the difference between two given dates in seconds.
+ * @param {Date} date1
+ * @param {Date} date2
+ * @returns {number}
+ */
+export function diffSeconds(date1?: Date, date2?: Date): number {
+    if (!date1 || !date2) {
+        return 9999999;
+    }
+    date2 = new Date(date2); //typescript doesn't know the difference between string and date...
+    date1 = new Date(date1);
+    const diff = Math.abs(date1.getTime() - date2.getTime());
+    return Math.ceil(diff / 1000);
 }
 
 /**

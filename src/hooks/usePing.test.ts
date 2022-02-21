@@ -4,9 +4,13 @@ import { usePing } from './usePing';
 
 jest.useFakeTimers();
 
-jest.mock('../utils', () => ({
-    ping: jest.fn()
-}));
+jest.mock('../utils', () => {
+    const actual = jest.requireActual('../utils');
+    return {
+        ...actual,
+        ping: jest.fn()
+    };
+});
 
 describe('usePing()', () => {
     it('should ping a given url source', async () => {
