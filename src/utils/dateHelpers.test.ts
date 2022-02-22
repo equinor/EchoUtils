@@ -102,7 +102,7 @@ describe('diffSeconds()', () => {
         const result = diffSeconds(date1, date2);
 
         // then
-        expect(result).toEqual(9999999);
+        expect(result).toEqual(Number.MAX_SAFE_INTEGER);
     });
 });
 

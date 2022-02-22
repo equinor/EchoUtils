@@ -40,7 +40,7 @@ export function diffMinutes(dt2: Date, dt1: Date): number | undefined {
  */
 export function diffSeconds(date1?: Date, date2?: Date): number {
     if (!date1 || !date2) {
-        return 9999999;
+        return Number.MAX_SAFE_INTEGER;
     }
     date2 = new Date(date2); //typescript doesn't know the difference between string and date...
     date1 = new Date(date1);
