@@ -1,4 +1,4 @@
-import { getDeepLinkParam, getDeepLinkParams, setDeepLinkParam } from '../../utils';
+import { getDeepLinkParam, getDeepLinkParams, setDeepLinkParam } from '.';
 
 describe('getDeepLinkParams', () => {
     it('Should return instance code with correct value', () => {

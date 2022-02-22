@@ -1,6 +1,11 @@
 // useWindowSize from usehooks.com
 import { useEffect, useState } from 'react';
 
+/**
+ * Get the current size of the browser window.
+ * @returns {width?: number; height?: number} Width and height of the current browser window size.
+ * Returns undefined if there is no window object (for example: executed on server side)
+ */
 export function useWindowSize(): { width?: number; height?: number } {
     // Initialize state with undefined width/height so server and client renders match
     // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/

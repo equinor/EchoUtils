@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ObserverClass, ObserverIdentifier } from './classObserver';
-import { elapsedTimeInSeconds } from './formatTimeHelpers';
+import { elapsedTimeInSeconds } from './dateHelpers';
 
 /**
  * Log configuration

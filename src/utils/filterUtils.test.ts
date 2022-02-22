@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { filterOnProps } from '../../utils/filterUtils';
+import { filterOnProps } from './filterUtils';
 
 const object1 = {
     prop1: 'prop1',

@@ -1,4 +1,4 @@
-import classObserver, { ObserverIdentifier } from '../../utils/classObserver';
+import classObserver, { ObserverIdentifier } from './classObserver';
 
 describe('ClassObserver ', () => {
     it('Subscriptions', () => {

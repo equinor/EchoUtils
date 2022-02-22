@@ -1,6 +1,6 @@
 import { fireEvent } from '@testing-library/dom';
 import { act, renderHook } from '@testing-library/react-hooks';
-import { useWindowSize } from '../../hooks';
+import { useWindowSize } from './';
 
 // Inspired from https://alexboffey.co.uk/blog/jest-window-mock/
 describe('useWindowSize', () => {

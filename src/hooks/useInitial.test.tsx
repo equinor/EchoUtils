@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { useInitial } from '../../hooks/useInitial';
+import { useInitial } from './useInitial';
 
 test('should should be called once', () => {
     const func = jest.fn();

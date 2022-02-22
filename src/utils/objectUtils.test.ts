@@ -1,4 +1,4 @@
-import { deepIsEqual, findValueInObjectValues, objectIsEmpty } from '../../utils/objectUtils';
+import { deepIsEqual, findValueInObjectValues, objectIsEmpty } from './objectUtils';
 
 describe('objectIsEmpty', () => {
     it('should return true if all values are empty in an object', () => {

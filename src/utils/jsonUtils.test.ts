@@ -1,4 +1,4 @@
-import { parseJsonWithDate } from '../../utils/jsonUtils';
+import { parseJsonWithDate } from './jsonUtils';
 
 describe('parseJsonWithDate', () => {
     it('should parse JSON strings and keep Date types', () => {
