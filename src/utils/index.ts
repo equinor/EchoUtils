@@ -8,10 +8,9 @@ export * from './deepLinkParams';
 export * from './filterUtils';
 export * from './formatString';
 export * from './getKeyByValue';
-export * from "./hash";
+export * from './hash';
 export * from './jsonUtils';
 export * from './logger';
 export type { LoggerConfiguration, SubscriberCallbackFunction } from './logger';
 export * from './objectUtils';
 export * from './randomIdGenerator';
-
