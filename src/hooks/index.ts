@@ -8,4 +8,6 @@ export { useIsSmallScreen } from './useIsSmallScreen';
 export * from './useNavigatorOnline';
 export { useOnOutsideClick } from './useOnOutsideClick';
 export { usePing } from './usePing';
+export { useTabTitle } from "./useTabTitle";
 export { useWindowSize } from './useWindowSize';
+
