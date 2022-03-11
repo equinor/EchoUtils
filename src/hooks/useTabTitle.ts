@@ -6,7 +6,7 @@ import { useInitial } from '../hooks';
  */
 export function useTabTitle(title: string): void {
     useInitial(() => {
-        const previousTitle = globalThis.document.title;
+        const previousTitle = window.document.title;
         window.document.title = title;
 
         return () => {
