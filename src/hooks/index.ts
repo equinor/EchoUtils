@@ -9,4 +9,5 @@ export * from './useNavigatorOnline';
 export { useOnOutsideClick } from './useOnOutsideClick';
 export { usePing } from './usePing';
 export { useStateSafe } from './useSafeState';
+export { useTabTitle } from './useTabTitle';
 export { useWindowSize } from './useWindowSize';
