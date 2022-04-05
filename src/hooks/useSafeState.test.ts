@@ -18,6 +18,7 @@ describe('useStateSafe()', () => {
 
         // when
         const { result } = renderHook(() => useStateSafe('random value'));
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const [customValue, setCustomValue] = result.current;
         act(() => {
             setCustomValue('another random value');
@@ -35,6 +36,7 @@ describe('useStateSafe()', () => {
 
         // when
         const { result } = renderHook(() => useStateSafe('random value'));
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const [customValue, setCustomValue] = result.current;
         cleanup();
         act(() => {
