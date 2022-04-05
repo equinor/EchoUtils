@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { diffSeconds, ping } from '../utils';
 interface IntranetCheck {
     isSourceAvailable: boolean;
+    isPingLoading: boolean;
 }
 
 interface CachedPing {
@@ -34,26 +35,30 @@ async function pingSourceWithCache(
  * @param source string - The url path to ping.
  * @param useCachedPing boolean - Use a cached result of an earlier ping.
  * @param renewCacheSeconds  number - Overwrite cache after this given seconds.
- * @returns { isSourceAvailable: boolean; }
+ * @returns { isSourceAvailable: boolean; isLoading: boolean }
  */
 export function usePing(source: string, useCachedPing = true, renewCacheSeconds = 30): IntranetCheck {
     const [isSourceAvailable, setIsSourceAvailable] = useState<boolean>(false);
+    const [isPingLoading, setIsPingLoading] = useState<boolean>(false);
 
     useEffect(() => {
         let isMounted = true;
 
         async function runPing(): Promise<void> {
-            const isAvailable = await pingSourceWithCache(source, useCachedPing, renewCacheSeconds);
-            if (isMounted) {
-                setIsSourceAvailable(isAvailable);
+            if (!isMounted) {
+                return;
             }
+            setIsPingLoading(true);
+            const isAvailable = await pingSourceWithCache(source, useCachedPing, renewCacheSeconds);
+            setIsSourceAvailable(isAvailable);
+            setIsPingLoading(false);
         }
         runPing();
 
         return (): void => {
             isMounted = false;
         };
-    }, [isSourceAvailable, source, useCachedPing, renewCacheSeconds]);
+    }, [source, useCachedPing, renewCacheSeconds]);
 
-    return { isSourceAvailable };
+    return { isSourceAvailable, isPingLoading };
 }

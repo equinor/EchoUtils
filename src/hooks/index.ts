@@ -8,4 +8,5 @@ export { useIsSmallScreen } from './useIsSmallScreen';
 export * from './useNavigatorOnline';
 export { useOnOutsideClick } from './useOnOutsideClick';
 export { usePing } from './usePing';
+export { useStateSafe } from './useSafeState';
 export { useWindowSize } from './useWindowSize';
