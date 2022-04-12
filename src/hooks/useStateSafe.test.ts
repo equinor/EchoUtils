@@ -1,6 +1,6 @@
 import { act, cleanup, renderHook } from '@testing-library/react-hooks/pure';
 import { useState } from 'react';
-import { useStateSafe } from './useSafeState';
+import { useStateSafe } from './useStateSafe';
 
 jest.mock('react', () => {
     const actual = jest.requireActual('react');
