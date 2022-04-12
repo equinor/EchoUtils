@@ -1,4 +1,4 @@
-import { useInitial } from '../hooks';
+import { useInitial } from './useInitial';
 
 /**
  * Sets the provided string as the tab or window title.
