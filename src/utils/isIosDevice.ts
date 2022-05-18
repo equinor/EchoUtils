@@ -1,5 +1,5 @@
 function isIosDevice(): boolean {
-    const isIos = /iphone|ipad|ipod|macintosh/i.test(navigator.userAgent.toLowerCase()) && navigator.maxTouchPoints > 1;
+    const isIos = navigator.maxTouchPoints > 1 && /iphone|ipad|ipod|macintosh/i.test(navigator.userAgent.toLowerCase());
     return isIos;
 }
 
