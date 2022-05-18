@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { iOs } from '../utils/isIosDevice';
 import { useInitial } from './useInitial';
 
 /**
@@ -7,15 +8,11 @@ import { useInitial } from './useInitial';
  */
 
 export function useIsIosDevice(): boolean {
-    const [isIosDevice, setIsIosDevice] = useState(false);
+    const [isIosDeviceState, setIsIosDeviceState] = useState(false);
 
     useInitial(() => {
-        if (/iphone|ipad|ipod|macintosh/i.test(navigator.userAgent.toLowerCase()) && navigator.maxTouchPoints > 1) {
-            setIsIosDevice(true);
-        } else {
-            setIsIosDevice(false);
-        }
+        setIsIosDeviceState(iOs.isIosDevice());
     });
 
-    return isIosDevice;
+    return isIosDeviceState;
 }

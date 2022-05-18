@@ -34,6 +34,7 @@ describe('useIsIosDevice()', () => {
             value: { userAgent: 'pokemonOS', maxTouchPoints: 2 },
             writable: true
         });
+
         // when
         act(() => {
             result = renderHook(() => useIsIosDevice()).result;

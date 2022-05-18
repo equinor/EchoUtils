@@ -8,6 +8,7 @@ export * from './deepLinkParams';
 export * from './filterUtils';
 export * from './formatString';
 export * from './getKeyByValue';
+export { iOs } from './isIosDevice';
 export * from './jsonUtils';
 export * from './logger';
 export type { LoggerConfiguration, SubscriberCallbackFunction } from './logger';
