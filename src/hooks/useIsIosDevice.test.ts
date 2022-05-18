@@ -1,5 +1,4 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { iOs } from '../utils/isIosDevice';
 import { useIsIosDevice } from './useIsIosDevice';
 
 describe('useIsIosDevice()', () => {
@@ -18,7 +17,6 @@ describe('useIsIosDevice()', () => {
                 value: { userAgent: deviceType, maxTouchPoints: 2 },
                 writable: true
             });
-            iOs.resetIosDeviceCachedValue();
 
             // when
             act(() => {
@@ -36,7 +34,6 @@ describe('useIsIosDevice()', () => {
             value: { userAgent: 'pokemonOS', maxTouchPoints: 2 },
             writable: true
         });
-        iOs.resetIosDeviceCachedValue();
 
         // when
         act(() => {

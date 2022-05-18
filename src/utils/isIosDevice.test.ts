@@ -14,7 +14,6 @@ describe('isIosDevice()', () => {
             value: { userAgent: 'pokemonOS', maxTouchPoints: 2 },
             writable: true
         });
-        iOs.resetIosDeviceCachedValue();
 
         // when
         const result = iOs.isIosDevice();
@@ -30,7 +29,6 @@ describe('isIosDevice()', () => {
                 value: { userAgent: deviceType, maxTouchPoints: 2 },
                 writable: true
             });
-            iOs.resetIosDeviceCachedValue();
 
             // when
             const result = iOs.isIosDevice();
