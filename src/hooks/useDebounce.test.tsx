@@ -2,7 +2,9 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import { useDebounce } from './useDebounce';
 
 beforeEach(() => {
-    jest.useFakeTimers('legacy');
+    jest.useFakeTimers({
+        legacyFakeTimers: true
+    });
 });
 
 afterEach(() => {
