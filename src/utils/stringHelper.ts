@@ -53,9 +53,7 @@ function firstOrEmpty(values: ReadonlyArray<string | undefined>): string {
  * @returns Returns the trimmed string with '...' at the end, if the string is longer than the given length. If not, returns the original string.
  */
 export function trimToLength(inputString: string, stringLength: number): string {
-    return inputString.length > stringLength
-        ? inputString.substring(0, stringLength) + '...'
-        : inputString;
+    return inputString.length > stringLength ? inputString.substring(0, stringLength) + '...' : inputString;
 }
 
 export const stringHelper = {
