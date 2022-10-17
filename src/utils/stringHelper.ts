@@ -47,10 +47,20 @@ function firstOrEmpty(values: ReadonlyArray<string | undefined>): string {
     return orEmpty(result);
 }
 
+/**
+ * Trims a string based on a given length. If the string is longer than the given length, it adds '...' at the end.
+ * @param values The string to trim and the length.
+ * @returns Returns the trimmed string with '...' at the end, if the string is longer than the given length. If not, returns the original string.
+ */
+export function trimToLength(inputString: string, stringLength: number): string {
+    return inputString.length > stringLength ? inputString.substring(0, stringLength) + '...' : inputString;
+}
+
 export const stringHelper = {
     isNullOrEmpty,
     orEmpty,
     firstOrEmpty,
     joinOrEmpty,
+    trimToLength,
     formatToUi: formatString
 };
