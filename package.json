@@ -1,6 +1,6 @@
 {
     "name": "@equinor/echo-utils",
-    "version": "0.2.12",
+    "version": "0.3.0-r18-beta-1",
     "description": "Utils and hooks for echo web project",
     "main": "dist/index.js",
     "types": "dist/types/index.d.ts",
@@ -41,7 +41,6 @@
         "@rollup/plugin-typescript": "^8.3.4",
         "@testing-library/dom": "^8.17.1",
         "@testing-library/react": "^13.4.0",
-        "@testing-library/react-hooks": "^8.0.1",
         "@types/jest": "^28.1.6",
         "@types/react": "^18.0.26",
         "@typescript-eslint/eslint-plugin": "^5.33.0",
