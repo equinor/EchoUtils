@@ -1,4 +1,4 @@
-import { act, cleanup, renderHook } from '@testing-library/react-hooks/pure';
+import { act, cleanup, renderHook } from '@testing-library/react/pure';
 import { useState } from 'react';
 import { useStateSafe } from './useStateSafe';
 

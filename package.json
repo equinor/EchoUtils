@@ -26,8 +26,8 @@
     "author": "Echo Core",
     "license": "MIT",
     "peerDependencies": {
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2"
+        "react": "^18.1.0",
+        "react-dom": "^18.1.0"
     },
     "dependencies": {
         "react-cool-onclickoutside": "^1.7.0"
@@ -40,11 +40,10 @@
         "@equinor/echo-update": "^1.3.0",
         "@rollup/plugin-typescript": "^8.3.4",
         "@testing-library/dom": "^8.17.1",
-        "@testing-library/react": "^12.1.5",
+        "@testing-library/react": "^13.4.0",
         "@testing-library/react-hooks": "^8.0.1",
         "@types/jest": "^28.1.6",
-        "@types/react": "^17.0.45",
-        "@types/react-test-renderer": "^17.0.1",
+        "@types/react": "^18.0.26",
         "@typescript-eslint/eslint-plugin": "^5.33.0",
         "@typescript-eslint/parser": "^5.33.0",
         "babel-jest": "^28.1.3",
@@ -57,9 +56,8 @@
         "jest-environment-jsdom": "^28.1.3",
         "jest-expo": "^46.0.1",
         "prettier": "^2.7.1",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2",
-        "react-test-renderer": "^17.0.2",
+        "react": "^18.1.0",
+        "react-dom": "^18.1.0",
         "rollup": "^2.77.2",
         "rollup-plugin-babel": "^4.4.0",
         "rollup-plugin-commonjs": "^10.1.0",

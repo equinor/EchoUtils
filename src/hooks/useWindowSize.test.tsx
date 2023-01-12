@@ -1,5 +1,5 @@
 import { fireEvent } from '@testing-library/dom';
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import { useWindowSize } from './';
 
 // Inspired from https://alexboffey.co.uk/blog/jest-window-mock/
