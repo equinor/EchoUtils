@@ -5,7 +5,6 @@
     "main": "dist/index.js",
     "types": "dist/types/index.d.ts",
     "source": "src/index.ts",
-    "module": "true",
     "scripts": {
         "build": "rollup -c",
         "build-watch": "rollup -c -w ",
