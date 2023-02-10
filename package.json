@@ -26,8 +26,8 @@
     "author": "Echo Core",
     "license": "MIT",
     "peerDependencies": {
-        "react": "^18.1.0",
-        "react-dom": "^18.1.0"
+        "react": " >= 18",
+        "react-dom": " >= 18"
     },
     "dependencies": {
         "react-cool-onclickoutside": "^1.7.0"
@@ -55,8 +55,8 @@
         "jest-environment-jsdom": "^28.1.3",
         "jest-expo": "^46.0.1",
         "prettier": "^2.7.1",
-        "react": "^18.1.0",
-        "react-dom": "^18.1.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
         "rollup": "^2.77.2",
         "rollup-plugin-babel": "^4.4.0",
         "rollup-plugin-commonjs": "^10.1.0",
