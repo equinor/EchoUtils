@@ -16,6 +16,7 @@ export default [
             format: 'cjs',
             exports: 'named'
         },
+        strictDeprecations: true,
         external: ['react', 'react-dom'],
         plugins: [
             del({ targets: 'dist/*', runOnce: true }),
