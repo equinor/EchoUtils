@@ -8,9 +8,22 @@ import { arrayHelper } from './utils/arrayHelper';
 import { colorHelper } from './utils/color';
 import { stringHelper } from './utils/stringHelper';
 import { disposable } from './utils/usingDisposable';
-export * from './types';
 
-/** @type {*} */
+/**
+ * Use named exports here.
+ */
+export * from './hooks';
+export * from './types';
+export * from './utils';
+export { arrayHelper } from './utils/arrayHelper';
+export { colorHelper } from './utils/color';
+export * from './utils/deviceInfo/deepDeviceInfo';
+export * from './utils/deviceInfo/deviceInfo';
+export { stringHelper } from './utils/stringHelper';
+export { disposable } from './utils/usingDisposable';
+
+/**
+ * @type {*} */
 const EchoUtils = {
     Hooks: hooks,
     Utils: utils,
