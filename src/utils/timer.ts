@@ -1,5 +1,9 @@
+import { logWarn } from '.';
+
 interface TimerProps {
+    /** Set a upper threshold for the timer, which will make the timer autostop. Default is 2000 milliseconds. */
     maxTime?: number;
+    /** Optional callback. Check the this reference binding as it will default to {Timer} */
     callback?: () => void;
 }
 
@@ -17,12 +21,15 @@ export class Timer {
      * We use a max time for the timer to avoid it counting "forever".
      * This value is configurable during construction.
      */
-    private _maxTime = 2000;
+    private _maxTime: number;
     private _timerId?: NodeJS.Timeout;
     private _status: TimerStatus;
 
     constructor(props?: TimerProps) {
-        if (typeof props?.maxTime === 'number') this._maxTime = props.maxTime;
+        if (props && props.maxTime && typeof props.maxTime === 'number' && !isNaN(props.maxTime)) {
+            this._maxTime = props.maxTime;
+        } else this._maxTime = 2000;
+
         this._status = 'Not started';
     }
 
@@ -41,17 +48,16 @@ export class Timer {
             this._timerId = globalThis.setTimeout(() => {
                 this._timeElapsed = this.stop();
                 console.warn('A timer has exceeded its max time at ', this._timeElapsed);
-                this._callback && this._callback();
                 this._status = 'Over time';
             }, this._maxTime);
-        } else console.info('A timer is already active.');
+        } else logWarn('A timer is already active.');
     }
 
     /** Stops the timer.
      * @returns {number} The time elapsed without decimal points.
      */
     public stop(): number {
-        this._callback && this._callback();
+        this._callback instanceof Function && this._callback();
         if (this._timerId) {
             clearTimeout(this._timerId);
             this._timerId = undefined;
