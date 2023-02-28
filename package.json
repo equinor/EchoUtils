@@ -29,7 +29,8 @@
         "react-dom": "^17.0.2"
     },
     "dependencies": {
-        "react-cool-onclickoutside": "^1.7.0"
+        "react-cool-onclickoutside": "^1.7.0",
+        "ua-parser-js": "^1.0.33"
     },
     "devDependencies": {
         "@babel/core": "^7.21.0",
@@ -70,7 +71,9 @@
         "rollup-plugin-typescript2": "^0.34.1",
         "rollup-plugin-web-worker-loader": "^1.6.1",
         "typedoc": "^0.23.25",
-        "typescript": "^4.9.5"
+        "typescript": "^4.9.5",
+        "ua-parser-js": "^1.0.33",
+        "user-agent-data-types": "^0.3.0"
     },
     "files": [
         "dist/"
