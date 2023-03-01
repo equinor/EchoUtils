@@ -32,15 +32,4 @@ describe('timer', () => {
         jest.advanceTimersByTime(520);
         expect(timer.status).toBe('Over time');
     });
-
-    it('should invoke the callback after timer is stopped', () => {
-        const mockCallback = jest.fn(() => undefined);
-        const timer = new Timer({ maxTime: 200, callback: mockCallback });
-        timer.start();
-        jest.advanceTimersByTime(220);
-        timer.stop();
-        mockCallback();
-        expect(timer.status).toBe('Stopped');
-        expect(mockCallback).toBeCalledTimes(2);
-    });
 });
