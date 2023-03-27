@@ -33,8 +33,11 @@ export class Timer {
         this._status = 'Not started';
     }
 
-    public get timeElapsed() {
-        return this._timeElapsed;
+    /** Returns the current elapsed time of the timer. Don't use this number for very time-critical use-cases. */
+    public get timeElapsed(): number {
+        if (this._startTime) {
+            return Date.now() - this._startTime?.getTime();
+        } else return 0;
     }
 
     public get status() {
