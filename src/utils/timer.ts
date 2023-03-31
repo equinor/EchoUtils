@@ -1,4 +1,4 @@
-import { logWarn } from '.';
+import { logWarn } from './logger';
 
 interface TimerProps {
     /** Set a upper threshold for the timer, which will make the timer autostop. Default is 2000 milliseconds. */
@@ -11,7 +11,8 @@ type TimerStatus = 'Started' | 'Stopped' | 'Over time' | 'Not started';
 
 export class Timer {
     /** Time elapsed is stored as milliseconds. */
-    private _timeElapsed = 0;
+    private _finalTime = 0;
+
     private _startTime?: Date;
 
     /** An optional callback when the timer stops. */
@@ -31,17 +32,30 @@ export class Timer {
         } else this._maxTime = 2000;
 
         this._status = 'Not started';
+        this._callback = props?.callback;
     }
 
     /** Returns the current elapsed time of the timer. Don't use this number for very time-critical use-cases. */
     public get timeElapsed(): number {
-        if (this._startTime) {
-            return Date.now() - this._startTime?.getTime();
-        } else return 0;
+        if (!this._startTime) return 0;
+
+        switch (this._status) {
+            case 'Started':
+                return Math.floor(Date.now() - this._startTime.getTime());
+            case 'Stopped':
+            case 'Over time':
+                return this._finalTime;
+            default:
+                return 0;
+        }
     }
 
     public get status() {
         return this._status;
+    }
+
+    public get maxTime() {
+        return this._maxTime;
     }
 
     public start(): void {
@@ -49,26 +63,28 @@ export class Timer {
             this._startTime = new Date();
             this._status = 'Started';
             this._timerId = globalThis.setTimeout(() => {
-                this._timeElapsed = this.stop();
-                console.warn('A timer has exceeded its max time at ', this._timeElapsed);
+                this._finalTime = this.stop();
+                logWarn('A timer has exceeded its max time at ', this._finalTime);
                 this._status = 'Over time';
             }, this._maxTime);
-        } else logWarn('A timer is already active.');
+        } else {
+            throw new Error('A timer is already active.');
+        }
     }
 
     /** Stops the timer.
      * @returns {number} The time elapsed without decimal points.
      */
     public stop(): number {
-        this._callback instanceof Function && this._callback();
+        this._callback && this._status !== 'Over time' && this._callback();
         if (this._timerId) {
             clearTimeout(this._timerId);
             this._timerId = undefined;
         }
         if (this._startTime) {
-            this._timeElapsed = Date.now() - this._startTime.getTime();
+            this._finalTime = Date.now() - this._startTime.getTime();
         }
         this._status = 'Stopped';
-        return Math.floor(this._timeElapsed);
+        return Math.floor(this._finalTime);
     }
 }
