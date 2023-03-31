@@ -10,7 +10,10 @@ interface TimerProps {
 type TimerStatus = 'Started' | 'Stopped' | 'Over time' | 'Not started';
 
 export class Timer {
-    /** Time elapsed is stored as milliseconds. */
+    /**
+     * Once timer stops, the time elapsed is stored here.
+     * For simplicity, this prop is kept private and consumer should use timeElapsed instead.
+     */
     private _finalTime = 0;
 
     private _startTime?: Date;
@@ -33,29 +36,6 @@ export class Timer {
 
         this._status = 'Not started';
         this._callback = props?.callback;
-    }
-
-    /** Returns the current elapsed time of the timer. Don't use this number for very time-critical use-cases. */
-    public get timeElapsed(): number {
-        if (!this._startTime) return 0;
-
-        switch (this._status) {
-            case 'Started':
-                return Math.floor(Date.now() - this._startTime.getTime());
-            case 'Stopped':
-            case 'Over time':
-                return this._finalTime;
-            default:
-                return 0;
-        }
-    }
-
-    public get status() {
-        return this._status;
-    }
-
-    public get maxTime() {
-        return this._maxTime;
     }
 
     public start(): void {
@@ -86,5 +66,28 @@ export class Timer {
         }
         this._status = 'Stopped';
         return Math.floor(this._finalTime);
+    }
+
+    /** Returns the current elapsed time of the timer. Don't use this number for very time-critical use-cases. */
+    public get timeElapsed(): number {
+        if (!this._startTime) return 0;
+
+        switch (this._status) {
+            case 'Started':
+                return Math.floor(Date.now() - this._startTime.getTime());
+            case 'Stopped':
+            case 'Over time':
+                return this._finalTime;
+            default:
+                return 0;
+        }
+    }
+
+    public get status() {
+        return this._status;
+    }
+
+    public get maxTime() {
+        return this._maxTime;
     }
 }
