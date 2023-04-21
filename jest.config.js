@@ -15,5 +15,6 @@ module.exports = {
             statements: 90
         }
     },
-    testEnvironment: 'jsdom'
+    testEnvironment: 'jsdom',
+    setupFiles: ['./src/utils/deviceInfo/tests/testSetup.ts']
 };
