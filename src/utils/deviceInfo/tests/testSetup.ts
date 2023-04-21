@@ -77,3 +77,4 @@ mockMatchMedia();
 mockLayoutDimensions();
 mockVisualViewport();
 mockScreen();
+export {};
