@@ -1,4 +1,4 @@
-import { cleanup, renderHook } from '@testing-library/react-hooks';
+import { cleanup, renderHook } from '@testing-library/react';
 import { useEffectAsync } from './useEffectAsync';
 
 describe('useEffectAsync()', () => {
