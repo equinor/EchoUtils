@@ -1,17 +1,10 @@
-export type SupportedPlatforms = 'Android' | 'Linux' | 'MacOs' | 'iOS' | 'iPadOS' | 'Windows' | 'Platform not found.';
+export type SupportedPlatforms = 'Android' | 'Linux' | 'MacOs' | 'iOS' | 'iPadOS' | 'Windows';
 
 export type DetailedDeviceInformation = {
     operatingSystem: string;
     webBrowser: string;
     deviceModel: string;
-    platform?: SupportedPlatforms;
-};
-
-export type IDeepDeviceInformation = {
-    operatingSystem: string;
-    webBrowser: string;
-    deviceModel: string;
-    platform?: SupportedPlatforms;
+    platform: SupportedPlatforms | 'Platform not found';
 };
 
 /** If the viewport is a square, then the orientation will be portrait. */
@@ -30,13 +23,13 @@ export type ScreenDimensions = {
      * can be smaller than the layout viewport if, for example, the user has pinch zoomed or summoned their
      * on-screen keyboards.
      */
-    visual: Dimensions;
+    visual?: Dimensions;
 
-    /**
-     * Provides measurements for the layout viewport. These values are always fetched from
-     * innerHeight and innerWidth, so scrollbars are included.
-     */
-    layout?: Dimensions;
+    /** Equivalent to innerWidth. Also known as layout width. */
+    width: number;
+
+    /** Equivalent to innerHeight. Also known as layout height.*/
+    height: number;
 
     /** Provides measurements for use in fullscreen contexts. */
     fullscreen?: FullscreenDimensions;
@@ -54,5 +47,5 @@ export interface IDeviceSummary {
     deviceType: DeviceType;
     userInput: UserInput;
     screenDimensions: ScreenDimensions;
-    deepInfo: IDeepDeviceInformation;
+    deepInfo: DetailedDeviceInformation;
 }

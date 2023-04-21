@@ -58,10 +58,8 @@ class DeviceInformation {
 
     private getUpdatedScreenDimensions(): ScreenDimensions {
         const updatedDimensions = {
-            layout: {
-                width: window.innerWidth,
-                height: window.innerHeight
-            },
+            width: window.innerWidth,
+            height: window.innerHeight,
             visual: window.visualViewport
                 ? {
                       width: window.visualViewport.width,

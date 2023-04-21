@@ -13,7 +13,8 @@ interface DetailedDeviceInformationParserProps {
  * deviceInformation property is altered after intialization.
  */
 class DetailedDeviceInformationProvider {
-    /** Represents the user agent string parser.
+    /**
+     * Represents the user agent string parser.
      * This method is treated as a fallback if the User-Agent Client Hints API does not provide a coherent value
      * or if the browser does not yet support it.
      */
@@ -21,15 +22,12 @@ class DetailedDeviceInformationProvider {
 
     /**
      * Stores the system report from a call to the underlying system.
-     * - If this is undefined, it is not yet initialized (it happens asynchronously).
+     * More info: https://developer.mozilla.org/en-US/docs/Web/API/User-Agent_Client_Hints_API
      */
-    private readonly _uaDataValues: UADataValues | undefined | null = undefined;
+    private readonly _uaDataValues: UADataValues | undefined = undefined;
 
-    /** Holds the current device information and should be the single source of truth.
-     *
-     * It can be undefined because we have to asynchronously fetch underlying system information.
-     */
-    private readonly _deviceInformation: DetailedDeviceInformation | undefined = undefined;
+    /* * Holds the current device information and should be the single source of truth. */
+    private readonly _deviceInformation: DetailedDeviceInformation;
 
     private constructor(props: DetailedDeviceInformationParserProps) {
         this._deviceInformation = props.deviceInformation;
@@ -38,8 +36,6 @@ class DetailedDeviceInformationProvider {
     }
 
     public get deviceInformation(): DetailedDeviceInformation {
-        if (this._deviceInformation === undefined)
-            throw new Error("Device information is undefined. This might mean it hasn't been initialized yet.");
         return this._deviceInformation;
     }
 
@@ -62,10 +58,10 @@ class DetailedDeviceInformationProvider {
         // User-Agent Client Hints API is not supported, use parser exclusively instead.
         if (!navigatorUAData) {
             deviceInformation = {
-                deviceModel: DDIP.getDeviceModel(uaParser) ?? 'Device model not found.',
-                operatingSystem: DDIP.getOperatingSystem(uaParser) ?? 'Operating system not found.',
-                webBrowser: DDIP.getWebBrowser(uaParser) ?? 'Web browser not found',
-                platform: DDIP.getPlatform(uaParser)
+                deviceModel: DDIP.getDeviceModel(uaParser) || 'Device model not found',
+                operatingSystem: DDIP.getOperatingSystem(uaParser) || 'Operating system not found',
+                webBrowser: DDIP.getWebBrowser(uaParser) || 'Web browser not found',
+                platform: DDIP.getPlatform(uaParser) || 'Platform not found'
             };
 
             // Call constructor and return the thin-air object.
@@ -90,9 +86,9 @@ class DetailedDeviceInformationProvider {
 
         deviceInformation = {
             webBrowser: webBrowser || 'Web browser not found.',
-            operatingSystem: operatingSystem || 'Operating system not found.',
-            deviceModel: deviceModel || 'Device model not found.',
-            platform: platform || 'Platform not found.'
+            operatingSystem: operatingSystem || 'Operating system not found',
+            deviceModel: deviceModel || 'Device model not found',
+            platform: platform || 'Platform not found'
         } as DetailedDeviceInformation;
 
         // Call constructor and return the thin-air object.
@@ -144,6 +140,7 @@ class DetailedDeviceInformationProvider {
         let browserNameVersion = '';
 
         browsers?.forEach((browser) => (browserNameVersion += `${browser.brand} ${browser.version};`));
+        browserNameVersion = browserNameVersion.substring(0, browserNameVersion.length - 1);
 
         return browserNameVersion;
     }
@@ -152,7 +149,7 @@ class DetailedDeviceInformationProvider {
         if (dataOrigin instanceof UAParser) {
             const { name: osName, version: osVersion } = dataOrigin.getOS();
             if (!osName && !osVersion) return '';
-            return `${osName} ${osVersion}`;
+            return `${osName || ''} ${osVersion || ''}`.trim();
         }
 
         const OS = dataOrigin.platform;
