@@ -128,31 +128,31 @@ class DeviceInformation {
         else return 'portrait';
     }
 
-    public getDeviceDetails(): DetailedDeviceInformation {
+    getDeviceDetails(): DetailedDeviceInformation {
         return this._detailedDeviceInfo.deviceInformation;
     }
 
-    public get orientation() {
+    get orientation() {
         return this._orientation;
     }
 
-    public get deviceType() {
+    get deviceType() {
         return this.getDeviceType();
     }
 
-    public get userInput() {
+    get userInput() {
         return this._userInput;
     }
 
-    public get screenDimensions(): ScreenDimensions {
+    get screenDimensions(): ScreenDimensions {
         return this.getUpdatedScreenDimensions();
     }
 
-    public get browser(): Browser | undefined {
+    get browser(): Browser | undefined {
         return this._browser;
     }
 
-    public getDeviceSummary(): IDeviceSummary {
+    getDeviceSummary(): IDeviceSummary {
         return {
             orientation: this.orientation,
             deviceType: this.deviceType,

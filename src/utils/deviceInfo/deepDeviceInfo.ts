@@ -35,61 +35,31 @@ class DetailedDeviceInformationProvider {
         this._uaParser = props.uaParser;
     }
 
-    public get deviceInformation(): DetailedDeviceInformation {
+    get deviceInformation(): DetailedDeviceInformation {
         return this._deviceInformation;
     }
 
-    public get uaDataValues() {
+    get uaDataValues() {
         return this._uaDataValues;
     }
 
-    public get uaParser() {
+    get uaParser() {
         return this._uaParser;
     }
 
     /** Constructs the parser and returns it.  */
-    public static initialize(): DetailedDeviceInformationProvider {
+    static initialize(): DetailedDeviceInformationProvider {
         // Assign essentially an alias for readability.
         const DDIP = DetailedDeviceInformationProvider;
         const navigatorUAData: NavigatorUAData | undefined = navigator?.userAgentData;
         const uaParser = new UAParser(navigator.userAgent);
         let deviceInformation: DetailedDeviceInformation | undefined;
 
-        // User-Agent Client Hints API is not supported, use parser exclusively instead.
         if (!navigatorUAData) {
-            deviceInformation = {
-                deviceModel: DDIP.getDeviceModel(uaParser) || 'Device model not found',
-                operatingSystem: DDIP.getOperatingSystem(uaParser) || 'Operating system not found',
-                webBrowser: DDIP.getWebBrowser(uaParser) || 'Web browser not found',
-                platform: DDIP.getPlatform(uaParser) || 'Platform not found'
-            };
-
-            // Call constructor and return the thin-air object.
-            return new DDIP({
-                deviceInformation: deviceInformation,
-                uaDataValues: navigatorUAData,
-                uaParser: uaParser
-            });
+            deviceInformation = createUAParserExclusively(uaParser);
+        } else {
+            deviceInformation = createClientHintsWithUAParserFallback(navigatorUAData, uaParser);
         }
-
-        // User-Agent Client Hints API is supported and initialized, use it with fallbacks to US parsing if we get falseys to specific props.
-        let webBrowser = DDIP.getWebBrowser(navigatorUAData);
-        if (webBrowser.length === 0) webBrowser = DDIP.getWebBrowser(uaParser);
-
-        let operatingSystem = DDIP.getOperatingSystem(navigatorUAData);
-        if (operatingSystem.length === 0) operatingSystem = DDIP.getOperatingSystem(uaParser);
-
-        const deviceModel = DDIP.getDeviceModel(uaParser);
-
-        let platform = DDIP.getPlatform(navigatorUAData);
-        if (!platform) platform = DDIP.getPlatform(uaParser);
-
-        deviceInformation = {
-            webBrowser: webBrowser || 'Web browser not found.',
-            operatingSystem: operatingSystem || 'Operating system not found',
-            deviceModel: deviceModel || 'Device model not found',
-            platform: platform || 'Platform not found'
-        } as DetailedDeviceInformation;
 
         // Call constructor and return the thin-air object.
         return new DDIP({
@@ -97,21 +67,46 @@ class DetailedDeviceInformationProvider {
             uaDataValues: navigatorUAData,
             uaParser: uaParser
         });
+
+        function createClientHintsWithUAParserFallback(navigatorUAData: NavigatorUAData, uaParser: UAParser) {
+            // User-Agent Client Hints API is supported and initialized, use it with fallbacks to US parsing if we get falseys to specific props.
+            let webBrowser = DDIP.getWebBrowser(navigatorUAData);
+            if (webBrowser.length === 0) webBrowser = DDIP.getWebBrowser(uaParser);
+
+            let operatingSystem = DDIP.getOperatingSystem(navigatorUAData);
+            if (operatingSystem.length === 0) operatingSystem = DDIP.getOperatingSystem(uaParser);
+
+            const deviceModel = DDIP.getDeviceModel(uaParser);
+
+            let platform = DDIP.getPlatform(navigatorUAData);
+            if (!platform) platform = DDIP.getPlatform(uaParser);
+
+            return {
+                webBrowser: webBrowser || 'Web browser not found.',
+                operatingSystem: operatingSystem || 'Operating system not found',
+                deviceModel: deviceModel || 'Device model not found',
+                platform: platform || 'Platform not found'
+            } as DetailedDeviceInformation;
+        }
+
+        function createUAParserExclusively(uaParser: UAParser): DetailedDeviceInformation {
+            return {
+                deviceModel: DDIP.getDeviceModel(uaParser) || 'Device model not found',
+                operatingSystem: DDIP.getOperatingSystem(uaParser) || 'Operating system not found',
+                webBrowser: DDIP.getWebBrowser(uaParser) || 'Web browser not found',
+                platform: DDIP.getPlatform(uaParser) || 'Platform not found'
+            };
+        }
     }
 
     private static getPlatform(dataOrigin: UAParser | UALowEntropyJSON): SupportedPlatforms | undefined {
+        let platform: string | undefined;
         if (dataOrigin instanceof UAParser) {
-            const platform = dataOrigin.getBrowser().name;
-            if (platform && isSupportedPlatform(platform)) return platform;
-            else return undefined;
+            platform = dataOrigin.getBrowser().name;
+        } else {
+            platform = dataOrigin.platform;
         }
-
-        const platform = dataOrigin.platform;
-        if (platform && isSupportedPlatform(platform)) {
-            return platform;
-        }
-
-        return undefined;
+        return platform && isSupportedPlatform(platform) ? platform : undefined;
 
         function isSupportedPlatform(target: string): target is SupportedPlatforms {
             switch (target.toLowerCase()) {
