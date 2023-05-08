@@ -1,6 +1,6 @@
 {
     "name": "@equinor/echo-utils",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "Utils and hooks for echo web project",
     "main": "dist/index.js",
     "types": "dist/types/index.d.ts",
