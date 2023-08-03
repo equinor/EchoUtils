@@ -85,7 +85,6 @@ class DeviceInformation {
 
     private getBrowser(): Browser | undefined {
         const browser = this._detailedDeviceInfo.deviceInformation.webBrowser.toLowerCase();
-
         if (browser.includes('chrome') || browser.includes('chromium')) return 'Chrome';
         if (browser.includes('firefox')) return 'Firefox';
         if (browser.includes('opera')) return 'Opera';
@@ -169,4 +168,3 @@ const deviceInfo = new DeviceInformation({
 });
 
 export { DeviceInformation, deviceInfo };
-

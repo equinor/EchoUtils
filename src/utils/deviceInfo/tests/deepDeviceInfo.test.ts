@@ -74,6 +74,16 @@ describe('A browser that doesnt support userAgentData', () => {
         expect(deviceInfo.deviceType).toBe('desktop');
         expect(deviceInfo.screenDimensions).toBeDefined();
     });
+
+    test('Simulated Samsung device running Samsung Internet', () => {
+        const mockedUserAgent =
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/22.0 Chrome/111.0.5563.116 Safari/537.36';
+        setupUserAgent(mockedUserAgent);
+        const detailedDeviceInfo = DetailedDeviceInformationProvider.initialize();
+        const deviceInfo = new DeviceInformation({ detailedDeviceInfo });
+        expect(detailedDeviceInfo.deviceInformation.webBrowser).toBe('Samsung Browser 22.0');
+        expect(deviceInfo.browser).toBe('Samsung Internet');
+    });
 });
 
 type MockedNavigatorUAData = Pick<NavigatorUAData, 'brands' | 'mobile' | 'platform'>;
