@@ -91,6 +91,7 @@ class DeviceInformation {
         if (browser.includes('opera')) return 'Opera';
         if (browser.includes('safari')) return 'Safari';
         if (browser.includes('edge')) return 'Edge';
+        if (browser.includes('samsung')) return 'Samsung Internet';
 
         return undefined;
     }
@@ -167,4 +168,5 @@ const deviceInfo = new DeviceInformation({
     detailedDeviceInfo: detailedDeviceInformationProvider
 });
 
-export { deviceInfo, DeviceInformation };
+export { DeviceInformation, deviceInfo };
+
