@@ -81,7 +81,7 @@ class DetailedDeviceInformationProvider {
             let platform = DDIP.getPlatform(navigatorUAData);
             if (!platform) platform = DDIP.getPlatform(uaParser);
 
-            const deviceType = DDIP.getDeviceType(navigatorUAData);
+            const deviceType = DDIP.getDeviceType(uaParser);
 
             return {
                 webBrowser: webBrowser || 'Web browser not found.',
@@ -167,12 +167,16 @@ class DetailedDeviceInformationProvider {
     }
 
     private static getDeviceType(dataOrigin: UAParser): DeviceType {
-        if (dataOrigin.getDevice().type.includes('mobile')) {
-            return 'mobile';
+        const deviceType = dataOrigin.getDevice().type;
+        if (deviceType) {
+            if (deviceType.includes('mobile')) {
+                return 'mobile';
+            }
+            if (deviceType.includes('tablet')) {
+                return 'tablet';
+            }
         }
-        if (dataOrigin.getDevice().type.includes('tablet')) {
-            return 'tablet';
-        } else return 'desktop';
+        return 'desktop';
     }
 }
 
