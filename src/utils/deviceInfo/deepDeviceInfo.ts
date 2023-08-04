@@ -1,5 +1,5 @@
 import UAParser from 'ua-parser-js';
-import { DetailedDeviceInformation, SupportedPlatforms } from '../../types/device';
+import { DetailedDeviceInformation, DeviceType, SupportedPlatforms } from '../../types/device';
 
 interface DetailedDeviceInformationParserProps {
     deviceInformation: DetailedDeviceInformation;
@@ -81,11 +81,14 @@ class DetailedDeviceInformationProvider {
             let platform = DDIP.getPlatform(navigatorUAData);
             if (!platform) platform = DDIP.getPlatform(uaParser);
 
+            const deviceType = DDIP.getDeviceType(navigatorUAData);
+
             return {
                 webBrowser: webBrowser || 'Web browser not found.',
                 operatingSystem: operatingSystem || 'Operating system not found',
                 deviceModel: deviceModel || 'Device model not found',
-                platform: platform || 'Platform not found'
+                platform: platform || 'Platform not found',
+                deviceType: deviceType || 'Device type not found'
             } as DetailedDeviceInformation;
         }
 
@@ -94,7 +97,8 @@ class DetailedDeviceInformationProvider {
                 deviceModel: DDIP.getDeviceModel(uaParser) || 'Device model not found',
                 operatingSystem: DDIP.getOperatingSystem(uaParser) || 'Operating system not found',
                 webBrowser: DDIP.getWebBrowser(uaParser) || 'Web browser not found',
-                platform: DDIP.getPlatform(uaParser) || 'Platform not found'
+                platform: DDIP.getPlatform(uaParser) || 'Platform not found',
+                deviceType: DDIP.getDeviceType(uaParser) || 'Device type not found'
             };
         }
     }
@@ -160,6 +164,15 @@ class DetailedDeviceInformationProvider {
         const { model, vendor } = dataOrigin.getDevice();
         if (!model && !vendor) return '';
         return `${model} ${vendor}`;
+    }
+
+    private static getDeviceType(dataOrigin: UAParser): DeviceType {
+        if (dataOrigin.getDevice().type.includes('mobile')) {
+            return 'mobile';
+        }
+        if (dataOrigin.getDevice().type.includes('tablet')) {
+            return 'tablet';
+        } else return 'desktop';
     }
 }
 

@@ -5,6 +5,7 @@ export type DetailedDeviceInformation = {
     webBrowser: string;
     deviceModel: string;
     platform: SupportedPlatforms | 'Platform not found';
+    deviceType: DeviceType;
 };
 
 /** If the viewport is a square, then the orientation will be portrait. */
