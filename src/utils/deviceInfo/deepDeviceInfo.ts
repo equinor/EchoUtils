@@ -168,14 +168,17 @@ class DetailedDeviceInformationProvider {
 
     private static getDeviceType(dataOrigin: UAParser): DeviceType {
         const deviceType = dataOrigin.getDevice().type;
-        if (deviceType) {
-            if (deviceType.includes('mobile')) {
-                return 'mobile';
-            }
-            if (deviceType.includes('tablet')) {
-                return 'tablet';
-            }
+        if (!deviceType) {
+            return 'desktop';
         }
+
+        if (deviceType.includes('mobile')) {
+            return 'mobile';
+        }
+        if (deviceType.includes('tablet')) {
+            return 'tablet';
+        }
+
         return 'desktop';
     }
 }
