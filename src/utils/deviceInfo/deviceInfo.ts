@@ -85,12 +85,12 @@ class DeviceInformation {
 
     private getBrowser(): Browser | undefined {
         const browser = this._detailedDeviceInfo.deviceInformation.webBrowser.toLowerCase();
-
         if (browser.includes('chrome') || browser.includes('chromium')) return 'Chrome';
         if (browser.includes('firefox')) return 'Firefox';
         if (browser.includes('opera')) return 'Opera';
         if (browser.includes('safari')) return 'Safari';
         if (browser.includes('edge')) return 'Edge';
+        if (browser.includes('samsung')) return 'Samsung Internet';
 
         return undefined;
     }
@@ -102,25 +102,7 @@ class DeviceInformation {
 
     /** Returns the current viewing medium.*/
     private getDeviceType(): DeviceType {
-        const deviceInfo = this._detailedDeviceInfo.deviceInformation;
-
-        // Find iDevices
-        if (deviceInfo.deviceModel === 'iPad Apple') return 'tablet';
-        if (deviceInfo.deviceModel === 'iPhone Apple') return 'mobile';
-        if (deviceInfo.platform === 'MacOs') return 'desktop';
-
-        // Find Android phones.
-        if (deviceInfo.platform === 'Android') return 'mobile';
-
-        /* Find Windows desktops.
-         * Implementers should note users will have touch screens on Windows desktop devices. */
-        if (deviceInfo.platform === 'Windows') return 'desktop';
-
-        /* Find Linux desktops with mouse inputs.
-         * A clash with Android mobile or tablet is a possibility. */
-        if (deviceInfo.platform === 'Linux' && this._userInput === 'mouse') return 'desktop';
-
-        return 'desktop';
+        return this._detailedDeviceInfo.deviceInformation.deviceType;
     }
 
     private getOrientation(): ScreenOrientation {
@@ -130,6 +112,11 @@ class DeviceInformation {
 
     getDeviceDetails(): DetailedDeviceInformation {
         return this._detailedDeviceInfo.deviceInformation;
+    }
+
+    get platform() {
+        const deviceInfo = this._detailedDeviceInfo.deviceInformation;
+        return deviceInfo.platform;
     }
 
     get orientation() {
@@ -167,4 +154,4 @@ const deviceInfo = new DeviceInformation({
     detailedDeviceInfo: detailedDeviceInformationProvider
 });
 
-export { deviceInfo, DeviceInformation };
+export { DeviceInformation, deviceInfo };

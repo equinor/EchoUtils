@@ -5,6 +5,7 @@ export type DetailedDeviceInformation = {
     webBrowser: string;
     deviceModel: string;
     platform: SupportedPlatforms | 'Platform not found';
+    deviceType: DeviceType;
 };
 
 /** If the viewport is a square, then the orientation will be portrait. */
@@ -13,7 +14,7 @@ export type ScreenOrientation = 'portrait' | 'landscape';
 /** Keep in mind, this is calculated when the page loads, so be sure to do refresh if simulating a device in DevTools. */
 export type DeviceType = 'mobile' | 'tablet' | 'desktop';
 export type UserInput = 'touch' | 'mouse';
-export type Browser = 'Chrome' | 'Safari' | 'Firefox' | 'Edge' | 'Opera';
+export type Browser = 'Chrome' | 'Safari' | 'Firefox' | 'Edge' | 'Opera' | 'Samsung Internet';
 
 type Dimensions = { width: number; height: number };
 export type ScreenDimensions = {

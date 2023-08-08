@@ -74,6 +74,38 @@ describe('A browser that doesnt support userAgentData', () => {
         expect(deviceInfo.deviceType).toBe('desktop');
         expect(deviceInfo.screenDimensions).toBeDefined();
     });
+
+    test('Simulated Android device running Firefox 116', () => {
+        const mockedUserAgent = 'Mozilla/5.0 (Android 13; Mobile; rv:109.0) Gecko/116.0 Firefox/116.0';
+        setupUserAgent(mockedUserAgent);
+
+        const detailedDeviceInfo = DetailedDeviceInformationProvider.initialize();
+        expect(detailedDeviceInfo.deviceInformation.deviceModel).toBe('Device model not found');
+        expect(detailedDeviceInfo.deviceInformation.operatingSystem).toBe('Android 13');
+        expect(detailedDeviceInfo.deviceInformation.platform).toBe('Platform not found');
+        expect(detailedDeviceInfo.deviceInformation.webBrowser).toBe('Firefox 116.0');
+
+        const deviceInfo = new DeviceInformation({ detailedDeviceInfo });
+        expect(deviceInfo.browser).toBe('Firefox');
+        expect(deviceInfo.deviceType).toBe('mobile');
+        expect(deviceInfo.screenDimensions).toBeDefined();
+    });
+
+    test('Simulated Samsung device running Samsung Internet', () => {
+        const mockedUserAgent =
+            'Mozilla/5.0 (Linux; Android 11; SAMSUNG SM-G973U) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/14.2 Mobile Safari/537.36';
+        setupUserAgent(mockedUserAgent);
+
+        const detailedDeviceInfo = DetailedDeviceInformationProvider.initialize();
+        expect(detailedDeviceInfo.deviceInformation.deviceModel).toBe('SM-G973U Samsung');
+        expect(detailedDeviceInfo.deviceInformation.operatingSystem).toBe('Android 11');
+        expect(detailedDeviceInfo.deviceInformation.platform).toBe('Platform not found');
+        expect(detailedDeviceInfo.deviceInformation.webBrowser).toBe('Samsung Browser 14.2');
+
+        const deviceInfo = new DeviceInformation({ detailedDeviceInfo });
+        expect(deviceInfo.deviceType).toBe('mobile');
+        expect(deviceInfo.browser).toBe('Samsung Internet');
+    });
 });
 
 type MockedNavigatorUAData = Pick<NavigatorUAData, 'brands' | 'mobile' | 'platform'>;
