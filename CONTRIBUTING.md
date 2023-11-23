@@ -12,7 +12,7 @@ If a topic is not covered in this document, please follow the established practi
     - [Where to report](#where-to-report)
     - [Writing a good bug report](#writing-a-good-bug-report)
     - [Suggested workflow](#suggested-workflow)
-  - [Contributing changes](#contributing-changes)
+    - [Contributing changes](#contributing-changes)
   - [Code conventions](#code-conventions)
   - [Development scripts](#development-scripts)
   - [Testing](#testing)
@@ -57,25 +57,25 @@ We use and recommend the following workflow:
     - You can skip this step for trivial changes.
     - Get agreement from the team that your proposed change is a good one.
     - Clearly state that you are going to take on implementing it, if that's the case.
-1. Create a personal fork of the repository on GitHub (if you don't already have one).
-1. In your fork, create a branch off of main (`git checkout -b mybranch`).
+2. Create a personal fork of the repository on GitHub (if you don't already have one).
+3. In your fork, create a branch off of main (`git checkout -b mybranch`).
     - Name the branch so that it clearly communicates your intentions, such as
       "issue-123" or "githubhandle-issue".
-1. Make and commit your changes to your branch.
-1. Add new tests corresponding to your change, if applicable.
-1. Run the relevant scripts in [the section below](https://github.com/microsoft/chat-copilot/blob/main/CONTRIBUTING.md#dev-scripts) to ensure that your build is clean and all tests are passing.
-1. Create a PR against the repository's **main** branch.
+4. Make and commit your changes to your branch.
+5. Add new tests corresponding to your change, if applicable.
+6. Run the relevant scripts in [the section below](https://github.com/microsoft/chat-copilot/blob/main/CONTRIBUTING.md#dev-scripts) to ensure that your build is clean and all tests are passing.
+7. Create a PR against the repository's **main** branch.
     - State in the description what issue or improvement your change is addressing.
-1. Wait for feedback or approval of your changes from the code maintainers.
-1. When area owners have signed off, and all checks are green, your PR will be merged.
+8. Wait for feedback or approval of your changes from the code maintainers.
+9. When area owners have signed off, and all checks are green, your PR will be merged.
 
-## Contributing changes
+### Contributing changes
 
 Project maintainers will merge accepted code changes from contributors.
 
 ## Code conventions
 
-Follow the coding rules stated here: Coding rules (https://github.com/equinor/EchopediaWeb#coding-rules)
+Follow the coding rules stated here: [Coding rules](https://github.com/equinor/EchopediaWeb#coding-rules)
 
 ## Development scripts
 
