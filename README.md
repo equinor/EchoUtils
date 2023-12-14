@@ -1,8 +1,12 @@
 ![logo](https://raw.githubusercontent.com/equinor/EchoUtils/main/doc/ee.png)
 
-# Echo-Utils
+# ~~EchoUtils~~ is now Archived (on December 14., 2023)
 
-Package for creating echo related Echo Utils.
+This repo has moved to: https://github.com/equinor/EchopediaWeb
+
+SubFolder: https://github.com/equinor/EchopediaWeb/tree/dev/libs/echo-utils
+
+~~Package for creating echo related Echo Utils.~~
 
 [![Version](https://img.shields.io/npm/v/@equinor/echo-utils.svg)](https://npmjs.org/package/@equinor/echo-utils)
 [![Downloads/week](https://img.shields.io/npm/dw/@equinor/echo-utils.svg)](https://npmjs.org/package/@equinor/echo-utils)
@@ -11,12 +15,13 @@ Package for creating echo related Echo Utils.
 
 /bundlephobia/:format/:packageName
 
--   [Echo-Utils](#echo-utils)
+-   [~~EchoUtils~~ is now Archived (on December 14., 2023)](#echoutils-is-now-archived-on-december-14-2023)
 -   [Install](#install)
     -   [NPM](#npm)
 -   [Development](#development)
     -   [Run](#run)
     -   [Test](#test)
+    -   [Documentation](#documentation)
 
 # Install
 
